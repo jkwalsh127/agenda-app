@@ -15,6 +15,10 @@ const theme = createTheme({
     },
     secondary: {
       main: "#FFF"
+    },
+    customColor: {
+      main: "#FFF",
+      darker: "#CCC"
     }
   },
   typography: {

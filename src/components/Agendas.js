@@ -6,9 +6,11 @@ import { listAgenda } from './../graphql/queries';
 import { createAgenda as createAgendaMutation, deleteAgenda as deleteAgendaMutation } from './../graphql/mutations';
 import { Button, Typography } from "@mui/material";
 
-const initialFormState = { title: '', description: '' }
+// const initialFormState = { title: '', description: '', firsttopic: '', firstestimate: '' };
+const initialFormState = { title: '', description: '', firsttopic: '', firstestimate: '', secondtopic: '', secondestimate: '', thirdtopic: '', thirdestimate: '', fourthtopic: '', fourthestimate: '' };
 
-function Agendas() {
+export default function Agendas() {
+
   const [agendas, setAgendas] = useState([]);
   const [formData, setFormData] = useState(initialFormState);
 
@@ -18,7 +20,7 @@ function Agendas() {
 
   async function fetchAgendas() {
     const apiData = await API.graphql({ query: listAgenda });
-    setAgendas(apiData.data.listAgendas.items);
+    setAgendas(apiData.data.listAgenda.items);
   }
 
   async function createAgenda() {
@@ -51,20 +53,61 @@ function Agendas() {
             placeholder="Agenda description"
             value={formData.description}
           />
-          <Button onClick={createAgenda} variant="outlined">Create Agenda</Button>
+          <input
+            onChange={e => setFormData({ ...formData, 'firsttopic': e.target.value})}
+            placeholder="First topic"
+            value={formData.fitopic}
+          />
+          <input
+            onChange={e => setFormData({ ...formData, 'firstestimate': e.target.value})}
+            placeholder="time estimation"
+            value={formData.firstestimate}
+          />
+          <input
+            onChange={e => setFormData({ ...formData, 'secondtopic': e.target.value})}
+            placeholder="Second topic"
+            value={formData.secondtopic}
+          />
+          <input
+            onChange={e => setFormData({ ...formData, 'secondestimate': e.target.value})}
+            placeholder="time estimation"
+            value={formData.secondestimate}
+          />
+          <input
+            onChange={e => setFormData({ ...formData, 'thirdtopic': e.target.value})}
+            placeholder="Third topic"
+            value={formData.thirdtopic}
+          />
+          <input
+            onChange={e => setFormData({ ...formData, 'thirdestimate': e.target.value})}
+            placeholder="time estimation"
+            value={formData.thirdestimate}
+          />
+          <input
+            onChange={e => setFormData({ ...formData, 'fourthtopic': e.target.value})}
+            placeholder="Fourth topic"
+            value={formData.fourthtopic}
+          />
+          <input
+            onChange={e => setFormData({ ...formData, 'fourthestimate': e.target.value})}
+            placeholder="time estimation"
+            value={formData.fourthestimate}
+          />
+          <Button onClick={createAgenda} variant="outlined" sx={{ color: "customColor.darker" }}>Create Agenda</Button>
           <div style={{marginBottom: 30}}>
             {
               agendas.map(agenda => (
                 <div key={agenda.id || agenda.title}>
                   <h2>{agenda.title}</h2>
                   <p>{agenda.description}</p>
-                  {/* {
-                    tasks.map(task => (
-                        <div key={task.id || task.title}>
-                        <h2>{task.title}</h2>
-                        <p>{task.estimate}</p>
-                    ))
-                  } */}
+                  <p>{agenda.firsttopic}</p>
+                  <p>{agenda.firstestimate}</p>
+                  <p>{agenda.secondtopic}</p>
+                  <p>{agenda.secondestimate}</p>
+                  <p>{agenda.thirdtopic}</p>
+                  <p>{agenda.thirdestimate}</p>
+                  <p>{agenda.fourthtopic}</p>
+                  <p>{agenda.fourthestimate}</p>
                   <Button onClick={() => deleteAgenda(agenda)} sx={{ p: 5, m: 5 }}>Delete agenda</Button>
                 </div>
               ))
@@ -75,5 +118,3 @@ function Agendas() {
     </Authenticator>
   );
 }
-
-export default Agendas;

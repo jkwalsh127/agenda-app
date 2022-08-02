@@ -23,8 +23,6 @@ export default function Agendas() {
     setAgendas(apiData.data.listAgenda.items);
   }
 
-
-
   async function deleteAgenda({ id }) {
     const newAgendasArray = agendas.filter(agenda => agenda.id !== id);
     setAgendas(newAgendasArray);
@@ -59,7 +57,7 @@ export default function Agendas() {
                       <Grid container spacing={0}>
 
                         <Grid item xs={4}>
-                          <Typography sx={{ color: "#12707d", textAlign: "center" }}>Description</Typography>
+                          <Typography sx={{ color: "#12707d", textAlign: "center", pt: "10px" }}>Description</Typography>
                         </Grid>
                         <Grid item xs={5}></Grid>
                         <Grid item xs={2}>
@@ -83,33 +81,43 @@ export default function Agendas() {
                           <Typography sx={{ color: "#12707d", textAlign: "center" }}>Time est.</Typography>
                         </Grid>
 
-                        <Grid item xs={9} sx={{ textAlign: "center", color: "#fffaf6" }}>
-                        {agenda.firsttopic}
-                        </Grid>
-                        <Grid item xs={3} sx={{ textAlign: "center"}}>
-                        {agenda.firstestimate}
-                        </Grid>
 
-                        <Grid item xs={9} sx={{ textAlign: "center", color: "#fffaf6" }}>
-                        {agenda.secondtopic}
-                        </Grid>
-                        <Grid item xs={3} sx={{ textAlign: "center"}}>
-                        {agenda.secondestimate}
-                        </Grid>
+                          <Grid item xs={12} sx={{display: agenda.firsttopic ? "flex" : "none"}}>
+                            <Grid item xs={9} sx={{ textAlign: "center", color: "#fffaf6" }}>
+                            {agenda.firsttopic}
+                            </Grid>
+                            <Grid item xs={3} sx={{ textAlign: "center"}}>
+                            {agenda.firstestimate}
+                            </Grid>
+                          </Grid>
 
-                        <Grid item xs={9} sx={{ textAlign: "center", color: "#fffaf6" }}>
-                        {agenda.thirdtopic}
-                        </Grid>
-                        <Grid item xs={3} sx={{ textAlign: "center"}}>
-                        {agenda.thirdestimate}
-                        </Grid>
+                          <Grid item xs={12} sx={{display: agenda.firsttopic ? "flex" : "none"}}>
+                          <Grid item xs={9} sx={{ textAlign: "center", color: "#fffaf6" }}>
+                          {agenda.secondtopic}
+                          </Grid>
+                          <Grid item xs={3} sx={{ textAlign: "center"}}>
+                          {agenda.secondestimate}
+                          </Grid>
+                          </Grid>
 
-                        <Grid item xs={9} sx={{ textAlign: "center", color: "#fffaf6", mb: "10px" }}>
-                        {agenda.fourthtopic}
-                        </Grid>
-                        <Grid item xs={3} sx={{ textAlign: "center"}}>
-                        {agenda.fourthestimate}
-                        </Grid>
+                        <Grid item xs={12} sx={{display: agenda.firsttopic ? "flex" : "none"}}>
+                          <Grid item xs={9} sx={{ textAlign: "center", color: "#fffaf6" }}>
+                          {agenda.thirdtopic}
+                          </Grid>
+                          <Grid item xs={3} sx={{ textAlign: "center"}}>
+                          {agenda.thirdestimate}
+                          </Grid>
+                          </Grid>
+
+                        <Grid item xs={12} sx={{display: agenda.firsttopic ? "flex" : "none"}}>
+                          <Grid item xs={9} sx={{ textAlign: "center", color: "#fffaf6", mb: "10px" }}>
+                          {agenda.fourthtopic}
+                          </Grid>
+                          <Grid item xs={3} sx={{ textAlign: "center"}}>
+                          {agenda.fourthestimate}
+                          </Grid>
+                          </Grid>
+
                     </Grid>
                     </div>
                   </div>

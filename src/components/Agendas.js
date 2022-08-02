@@ -4,8 +4,8 @@ import { API } from 'aws-amplify';
 import { Authenticator } from '@aws-amplify/ui-react';
 import { listAgenda } from './../graphql/queries';
 import { createAgenda as createAgendaMutation, deleteAgenda as deleteAgendaMutation } from './../graphql/mutations';
-import { Card, TextField, Button, Typography, Accordion, AccordionSummary, Backdrop, Modal, Box, Fade } from "@mui/material";
-import { ExpandMore } from '@mui/icons-material';
+import { Card, TextField, Button, Typography, Accordion, AccordionSummary, Backdrop, Modal, Box, Fade, Grid } from "@mui/material";
+import { ExpandMore, Delete } from '@mui/icons-material';
 
 const style = {
   position: 'absolute',
@@ -163,23 +163,69 @@ export default function Agendas() {
                     expandIcon={<ExpandMore />}
                     aria-controls="panel2a-content"
                     id="panel2a-header"
+                    sx={{ height: "50px" }}
                   >
-                    <Typography>
-                      <h2>{agenda.title}</h2>
-                    </Typography>
-                  </AccordionSummary>
+                      <Typography sx={{ fontSize: "22px", ml: "10px", color: "#fffaf6", fontWeight: "bold" }}>{agenda.title}</Typography>
+                    </AccordionSummary>
 
                   <div key={agenda.id || agenda.title}>
-                    <p>{agenda.description}</p>
-                    <p>{agenda.firsttopic}</p>
-                    <p>{agenda.firstestimate}</p>
-                    <p>{agenda.secondtopic}</p>
-                    <p>{agenda.secondestimate}</p>
-                    <p>{agenda.thirdtopic}</p>
-                    <p>{agenda.thirdestimate}</p>
-                    <p>{agenda.fourthtopic}</p>
-                    <p>{agenda.fourthestimate}</p>
-                    <Button onClick={() => deleteAgenda(agenda)} sx={{ p: 5, m: 5 }}>Delete agenda</Button>
+                    <div>
+                      <Grid container spacing={0}>
+
+                        <Grid item xs={4}>
+                          <Typography sx={{ color: "#12707d", textAlign: "center" }}>Description</Typography>
+                        </Grid>
+                        <Grid item xs={5}></Grid>
+                        <Grid item xs={2}>
+                          <Button variant="contained" sx={{ ml: "20px" }}>
+                            <Delete onClick={() => deleteAgenda(agenda)}></Delete>
+                          </Button>
+                        </Grid>
+
+                        <Grid item xs={9} sx={{ textAlign: "center", color: "#fffaf6"}}>
+                        {agenda.description}
+                        </Grid>
+                        <Grid item xs={3} sx={{ textAlign: "center" }}>
+
+                        </Grid>
+
+                        <Grid item xs={4}>
+                          <Typography sx={{ color: "#12707d", textAlign: "center" }}>Topics</Typography>
+                        </Grid>
+                        <Grid item xs={5}></Grid>
+                        <Grid item xs={3}>
+                          <Typography sx={{ color: "#12707d", textAlign: "center" }}>Time est.</Typography>
+                        </Grid>
+
+                        <Grid item xs={9} sx={{ textAlign: "center", color: "#fffaf6" }}>
+                        {agenda.firsttopic}
+                        </Grid>
+                        <Grid item xs={3} sx={{ textAlign: "center"}}>
+                        {agenda.firstestimate}
+                        </Grid>
+
+                        <Grid item xs={9} sx={{ textAlign: "center", color: "#fffaf6" }}>
+                        {agenda.secondtopic}
+                        </Grid>
+                        <Grid item xs={3} sx={{ textAlign: "center"}}>
+                        {agenda.secondestimate}
+                        </Grid>
+
+                        <Grid item xs={9} sx={{ textAlign: "center", color: "#fffaf6" }}>
+                        {agenda.thirdtopic}
+                        </Grid>
+                        <Grid item xs={3} sx={{ textAlign: "center"}}>
+                        {agenda.thirdestimate}
+                        </Grid>
+
+                        <Grid item xs={9} sx={{ textAlign: "center", color: "#fffaf6", mb: "10px" }}>
+                        {agenda.fourthtopic}
+                        </Grid>
+                        <Grid item xs={3} sx={{ textAlign: "center"}}>
+                        {agenda.fourthestimate}
+                        </Grid>
+                    </Grid>
+                    </div>
                   </div>
                 </Accordion>
               ))

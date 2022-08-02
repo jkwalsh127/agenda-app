@@ -11,10 +11,14 @@ Amplify.configure(config);
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#CCC"
+      main: "#11717d"
     },
     secondary: {
-      main: "#FFF"
+      main: "#f4673c",
+      lighter: "#64bfc4"
+    },
+    white: {
+      main: "#fffaf6"
     },
     customColor: {
       main: "#FFF",
@@ -22,11 +26,14 @@ const theme = createTheme({
     }
   },
   typography: {
-    myVariant: {
+    title: {
       fontSize: "3rem",
-      color: '#FFC'
+      color: '#000000',
+      textDecoration: 'underline #f4673c',
+      borderBottom: '3px solid #f4673c',
+      height: "66px"
     }
-  }
+  },
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

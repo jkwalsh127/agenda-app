@@ -12,3 +12,22 @@ code {
     monospace;
 }
 
+.app-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+.header {
+  display: flex;
+  width: 70%;
+  justify-content: flex-end;
+  padding-top: 10px;
+}
+
+.form-one {
+  width: 300px;
+}

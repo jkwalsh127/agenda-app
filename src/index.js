@@ -34,6 +34,12 @@ const theme = createTheme({
       height: "66px"
     }
   },
+  tooltip: {
+    custom: {
+      backgroundColor: "#f4673c",
+      color: "#f4673c",
+    }
+  }
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

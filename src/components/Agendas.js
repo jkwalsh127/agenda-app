@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import '@aws-amplify/ui-react/styles.css';
 import { API } from 'aws-amplify';
-import { Authenticator } from '@aws-amplify/ui-react';
+import { Authenticator, ButtonGroup } from '@aws-amplify/ui-react';
 import { listAgenda } from './../graphql/queries';
 import { deleteAgenda as deleteAgendaMutation } from './../graphql/mutations';
-import { Card, Button, Typography, Accordion, AccordionSummary, Grid } from "@mui/material";
-import { ExpandMore, Delete } from '@mui/icons-material';
+import { Card, Button, Typography, Accordion, AccordionSummary, Grid, Tooltip, Zoom, Modal, Backdrop } from "@mui/material";
+import { ExpandMore, PlayArrow, RemoveCircleOutline } from '@mui/icons-material';
 import NewAgenda from './NewAgenda';
+import StartAgenda from './StartAgenda';
 
 
 export default function Agendas() {
 
-
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const [agendas, setAgendas] = useState([]);
 
   useEffect(() => {
@@ -28,6 +31,9 @@ export default function Agendas() {
     setAgendas(newAgendasArray);
     await API.graphql({ query: deleteAgendaMutation, variables: { input: { id } }});
   }
+  async function startAgenda({ id }) {
+    handleOpen();
+  }
 
   return (
     <Authenticator>
@@ -36,6 +42,21 @@ export default function Agendas() {
           <Typography variant="title">Dashboard</Typography>
 
           <NewAgenda agendas={agendas} setAgendas={setAgendas} />
+
+          <Modal
+            aria-labelledby="transition-modal-title"
+            aria-describedby="transition-modal-description"
+            open={open}
+            onClose={handleClose}
+            closeAfterTransition
+            BackdropComponent={Backdrop}
+            BackdropProps={{
+              timeout: 500,
+            }}
+          >
+            <StartAgenda open={open} />
+          </Modal>
+
 
 
           <div style={{ width: "100%", display: "flex", flexDirection: "column" }}>
@@ -56,14 +77,30 @@ export default function Agendas() {
                     <div>
                       <Grid container spacing={0}>
 
+                        <Grid item xs={7}></Grid>
+                        <Grid item xs={5}>
+                          <ButtonGroup
+                            aria-label="outlined primary button group"
+                            variant="contained"
+                          > 
+                            <Tooltip title="Delete" placement="top" arrow TransitionComponent={Zoom} >
+                            <Button variant="contained" sx={{ ml: "0px", p: "3px" }}>
+                              <RemoveCircleOutline onClick={() => deleteAgenda(agenda)} xs={{fontSize: "large"}}></RemoveCircleOutline>
+                            </Button>
+                            </Tooltip>
+                            <Tooltip title="Begin Agenda" placement="top" arrow TransitionComponent={Zoom}>
+                            <Button variant="contained" sx={{ ml: "0px", p: "3px" }}>
+                              <PlayArrow onClick={() => startAgenda(agenda)}></PlayArrow>
+                            </Button>
+                            </Tooltip>
+                          </ButtonGroup>
+                          </Grid>
+
                         <Grid item xs={4}>
-                          <Typography sx={{ color: "#12707d", textAlign: "center", pt: "10px" }}>Description</Typography>
+                          <Typography sx={{ color: "#12707d", textAlign: "center" }}>Description</Typography>
                         </Grid>
-                        <Grid item xs={5}></Grid>
-                        <Grid item xs={2}>
-                          <Button variant="contained" sx={{ ml: "20px" }}>
-                            <Delete onClick={() => deleteAgenda(agenda)}></Delete>
-                          </Button>
+                        <Grid item xs={3}></Grid>
+                        <Grid item xs={4}>
                         </Grid>
 
                         <Grid item xs={9} sx={{ textAlign: "center", color: "#fffaf6"}}>
@@ -87,7 +124,7 @@ export default function Agendas() {
                             {agenda.firsttopic}
                             </Grid>
                             <Grid item xs={3} sx={{ textAlign: "center"}}>
-                            {agenda.firstestimate}
+                            {agenda.firstestimate + " min"}
                             </Grid>
                           </Grid>
 
@@ -96,7 +133,7 @@ export default function Agendas() {
                           {agenda.secondtopic}
                           </Grid>
                           <Grid item xs={3} sx={{ textAlign: "center"}}>
-                          {agenda.secondestimate}
+                          {agenda.secondestimate + " min"}
                           </Grid>
                           </Grid>
 
@@ -105,7 +142,7 @@ export default function Agendas() {
                           {agenda.thirdtopic}
                           </Grid>
                           <Grid item xs={3} sx={{ textAlign: "center"}}>
-                          {agenda.thirdestimate}
+                          {agenda.thirdestimate + " min"}
                           </Grid>
                           </Grid>
 
@@ -114,7 +151,7 @@ export default function Agendas() {
                           {agenda.fourthtopic}
                           </Grid>
                           <Grid item xs={3} sx={{ textAlign: "center"}}>
-                          {agenda.fourthestimate}
+                          {agenda.fourthestimate + " min"}
                           </Grid>
                           </Grid>
 

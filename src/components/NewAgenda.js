@@ -76,7 +76,7 @@ export default function NewAgenda({ agendas, setAgendas }) {
             <TextField
               sx={{ width: "30%", mt: 1, ml: "10px" }}
               id="outlined-search"
-              label="time estimation"
+              label="time (minutes)"
               onChange={e => setFormData({ ...formData, 'firstestimate': e.target.value})}
               value={formData.firstestimate}
             />
@@ -90,7 +90,7 @@ export default function NewAgenda({ agendas, setAgendas }) {
             <TextField
               sx={{ width: "30%", mt: 1, ml: "10px" }}
               id="outlined-search"
-              label="time estimation"
+              label="time (minutes)"
               onChange={e => setFormData({ ...formData, 'secondestimate': e.target.value})}
               value={formData.secondestimate}
             />
@@ -104,7 +104,7 @@ export default function NewAgenda({ agendas, setAgendas }) {
             <TextField
               sx={{ width: "30%", mt: 1, ml: "10px" }}
               id="outlined-search"
-              label="time estimation"
+              label="time (minutes)"
               onChange={e => setFormData({ ...formData, 'thirdestimate': e.target.value})}
               value={formData.thirdestimate}
             />
@@ -118,7 +118,7 @@ export default function NewAgenda({ agendas, setAgendas }) {
             <TextField
               sx={{ width: "30%", mt: 1, ml: "10px" }}
               id="outlined-search"
-              label="time estimation"
+              label="time (minutes)"
               onChange={e => setFormData({ ...formData, 'fourthestimate': e.target.value})}
               value={formData.fourthestimate}
             />

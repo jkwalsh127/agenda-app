@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField, Button, Typography, Box, Fade } from "@mui/material";
+import { Box, Fade, Grid, Pagination } from "@mui/material";
 
 const style = {
   position: 'absolute',
@@ -26,10 +26,35 @@ export default function StartAgenda({ open, openAgenda, agendas }) {
             {
             currentAgenda.map(agenda => (
                 <>
-                    {agenda.title}
+                    <Grid container spacing={0}>
+    
+                        <Grid item xs={12} sx={{}}>
+                          {agenda.title}
+                        </Grid>
+
+                        <Grid item xs={12} sx={{display: agenda.firsttopic ? "flex" : "none"}}>
+                            <Grid item xs={7} sx={{}}>
+                                {agenda.secondtopic}
+                            </Grid>
+                            <Grid item xs={3} sx={{}}>
+                                {"timer"}
+                            </Grid>
+                        </Grid>
+
+                        <Grid item xs={12}>
+                            {agenda.firstdescription}
+                        </Grid>
+
+                    </Grid>
                 </>
             ))
             }
+            {
+            currentAgenda.map(agenda => (
+                <Pagination count={agenda.secondtopic === "" ? 1 : agenda.thirdtopic === "" ? 2 : agenda.fourthtopic === "" ? 3 : 4 } color="primary" />
+            ))
+            }
+
           </Box>
         </Fade>
   )

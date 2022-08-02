@@ -98,20 +98,6 @@ export default function Agendas() {
                           </ButtonGroup>
                           </Grid>
 
-                        {/* <Grid item xs={4}>
-                          <Typography sx={{ color: "#12707d", textAlign: "center" }}>Description</Typography>
-                        </Grid>
-                        <Grid item xs={3}></Grid>
-                        <Grid item xs={4}>
-                        </Grid>
-
-                        <Grid item xs={9} sx={{ textAlign: "center", color: "#fffaf6"}}>
-                        {agenda.description}
-                        </Grid>
-                        <Grid item xs={3} sx={{ textAlign: "center" }}> */}
-
-                        {/* </Grid> */}
-
                         <Grid item xs={4}>
                           <Typography sx={{ color: "#12707d", textAlign: "center" }}>Topics</Typography>
                         </Grid>
@@ -145,7 +131,7 @@ export default function Agendas() {
                           </Grid>
                         </Grid>
                         <Grid item xs={12} sx={{pl: "25px", pr: "25px"}}>
-                          {agenda.firstdescription}
+                          {agenda.seconddescription}
                         </Grid>
 
                         <Grid item xs={12} sx={{display: agenda.thirdtopic ? "flex" : "none"}}>
@@ -158,7 +144,7 @@ export default function Agendas() {
                           </Grid>
                         </Grid>
                         <Grid item xs={12} sx={{pl: "25px", pr: "25px"}}>
-                          {agenda.firstdescription}
+                          {agenda.thirddescription}
                         </Grid>
 
                         <Grid item xs={12} sx={{display: agenda.fourthtopic ? "flex" : "none"}}>
@@ -171,7 +157,7 @@ export default function Agendas() {
                           </Grid>
                         </Grid>
                         <Grid item xs={12} sx={{pl: "25px", pr: "25px"}}>
-                          {agenda.firstdescription}
+                          {agenda.fourthdescription}
                         </Grid>
 
                     </Grid>

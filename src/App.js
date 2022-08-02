@@ -17,7 +17,7 @@ function App() {
             <div className='header-wrap'>
               <header className='header'>
                 <div className='nav'>
-                  <Button onClick={signOut} variant="contained" sx={{ mr: 2, height: 25, alignSelf: "center" }}>Sign Out</Button>
+                  <Button onClick={signOut} variant="contained" sx={{ mr: 2, height: 25, alignSelf: "center"}}>Sign Out</Button>
                   <Avatar sx={{ alignSelf: "center" }}>R</Avatar>
                 </div>
               </header>

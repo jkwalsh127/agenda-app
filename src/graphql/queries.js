@@ -6,15 +6,18 @@ export const getAgenda = /* GraphQL */ `
     getAgenda(id: $id) {
       id
       title
-      description
       firsttopic
       firstestimate
+      firstdescription
       secondtopic
       secondestimate
+      seconddescription
       thirdtopic
       thirdestimate
+      thirddescription
       fourthtopic
       fourthestimate
+      fourthdescription
       createdAt
       updatedAt
     }
@@ -30,15 +33,18 @@ export const listAgenda = /* GraphQL */ `
       items {
         id
         title
-        description
         firsttopic
         firstestimate
+        firstdescription
         secondtopic
         secondestimate
+        seconddescription
         thirdtopic
         thirdestimate
+        thirddescription
         fourthtopic
         fourthestimate
+        fourthdescription
         createdAt
         updatedAt
       }

@@ -16,6 +16,7 @@ export default function Agendas() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [agendas, setAgendas] = useState([]);
+  const [openAgenda, setOpenAgenda] = useState("")
 
   useEffect(() => {
     fetchAgendas();
@@ -33,6 +34,7 @@ export default function Agendas() {
   }
   async function startAgenda({ id }) {
     handleOpen();
+    setOpenAgenda(id);
   }
 
   return (
@@ -54,7 +56,7 @@ export default function Agendas() {
               timeout: 500,
             }}
           >
-            <StartAgenda open={open} />
+            <StartAgenda open={open} openAgenda={openAgenda} agendas={agendas} />
           </Modal>
 
 
@@ -96,7 +98,7 @@ export default function Agendas() {
                           </ButtonGroup>
                           </Grid>
 
-                        <Grid item xs={4}>
+                        {/* <Grid item xs={4}>
                           <Typography sx={{ color: "#12707d", textAlign: "center" }}>Description</Typography>
                         </Grid>
                         <Grid item xs={3}></Grid>
@@ -106,9 +108,9 @@ export default function Agendas() {
                         <Grid item xs={9} sx={{ textAlign: "center", color: "#fffaf6"}}>
                         {agenda.description}
                         </Grid>
-                        <Grid item xs={3} sx={{ textAlign: "center" }}>
+                        <Grid item xs={3} sx={{ textAlign: "center" }}> */}
 
-                        </Grid>
+                        {/* </Grid> */}
 
                         <Grid item xs={4}>
                           <Typography sx={{ color: "#12707d", textAlign: "center" }}>Topics</Typography>
@@ -124,36 +126,53 @@ export default function Agendas() {
                             {agenda.firsttopic}
                             </Grid>
                             <Grid item xs={3} sx={{ textAlign: "center"}}>
-                            {agenda.firstestimate + " min"}
+                              <span style={{color: "#fffaf6"}}>{agenda.firstestimate}</span>
+                              {" min"}
                             </Grid>
                           </Grid>
+                          <Grid item xs={12} sx={{pl: "25px", pr: "25px"}}>
+                            {agenda.firstdescription}
+                          </Grid>
 
-                          <Grid item xs={12} sx={{display: agenda.firsttopic ? "flex" : "none"}}>
+
+                        <Grid item xs={12} sx={{display: agenda.secondtopic ? "flex" : "none"}}>
                           <Grid item xs={9} sx={{ textAlign: "center", color: "#fffaf6" }}>
                           {agenda.secondtopic}
                           </Grid>
                           <Grid item xs={3} sx={{ textAlign: "center"}}>
-                          {agenda.secondestimate + " min"}
+                            <span style={{color: "#fffaf6"}}>{agenda.secondestimate}</span>
+                            {" min"}
                           </Grid>
-                          </Grid>
+                        </Grid>
+                        <Grid item xs={12} sx={{pl: "25px", pr: "25px"}}>
+                          {agenda.firstdescription}
+                        </Grid>
 
-                        <Grid item xs={12} sx={{display: agenda.firsttopic ? "flex" : "none"}}>
+                        <Grid item xs={12} sx={{display: agenda.thirdtopic ? "flex" : "none"}}>
                           <Grid item xs={9} sx={{ textAlign: "center", color: "#fffaf6" }}>
                           {agenda.thirdtopic}
                           </Grid>
                           <Grid item xs={3} sx={{ textAlign: "center"}}>
-                          {agenda.thirdestimate + " min"}
+                          <span style={{color: "#fffaf6"}}>{agenda.thirdestimate}</span>
+                            {" min"}                          
                           </Grid>
-                          </Grid>
+                        </Grid>
+                        <Grid item xs={12} sx={{pl: "25px", pr: "25px"}}>
+                          {agenda.firstdescription}
+                        </Grid>
 
-                        <Grid item xs={12} sx={{display: agenda.firsttopic ? "flex" : "none"}}>
+                        <Grid item xs={12} sx={{display: agenda.fourthtopic ? "flex" : "none"}}>
                           <Grid item xs={9} sx={{ textAlign: "center", color: "#fffaf6", mb: "10px" }}>
                           {agenda.fourthtopic}
                           </Grid>
                           <Grid item xs={3} sx={{ textAlign: "center"}}>
-                          {agenda.fourthestimate + " min"}
+                          <span style={{color: "#fffaf6"}}>{agenda.fourthestimate}</span>
+                            {" min"}                          
                           </Grid>
-                          </Grid>
+                        </Grid>
+                        <Grid item xs={12} sx={{pl: "25px", pr: "25px"}}>
+                          {agenda.firstdescription}
+                        </Grid>
 
                     </Grid>
                     </div>

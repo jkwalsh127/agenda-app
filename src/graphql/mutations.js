@@ -9,15 +9,18 @@ export const createAgenda = /* GraphQL */ `
     createAgenda(input: $input, condition: $condition) {
       id
       title
-      description
       firsttopic
       firstestimate
+      firstdescription
       secondtopic
       secondestimate
+      seconddescription
       thirdtopic
       thirdestimate
+      thirddescription
       fourthtopic
       fourthestimate
+      fourthdescription
       createdAt
       updatedAt
     }
@@ -31,15 +34,18 @@ export const updateAgenda = /* GraphQL */ `
     updateAgenda(input: $input, condition: $condition) {
       id
       title
-      description
       firsttopic
       firstestimate
+      firstdescription
       secondtopic
       secondestimate
+      seconddescription
       thirdtopic
       thirdestimate
+      thirddescription
       fourthtopic
       fourthestimate
+      fourthdescription
       createdAt
       updatedAt
     }
@@ -53,15 +59,18 @@ export const deleteAgenda = /* GraphQL */ `
     deleteAgenda(input: $input, condition: $condition) {
       id
       title
-      description
       firsttopic
       firstestimate
+      firstdescription
       secondtopic
       secondestimate
+      seconddescription
       thirdtopic
       thirdestimate
+      thirddescription
       fourthtopic
       fourthestimate
+      fourthdescription
       createdAt
       updatedAt
     }

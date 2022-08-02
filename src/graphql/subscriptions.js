@@ -6,15 +6,18 @@ export const onCreateAgenda = /* GraphQL */ `
     onCreateAgenda {
       id
       title
-      description
       firsttopic
       firstestimate
+      firstdescription
       secondtopic
       secondestimate
+      seconddescription
       thirdtopic
       thirdestimate
+      thirddescription
       fourthtopic
       fourthestimate
+      fourthdescription
       createdAt
       updatedAt
     }
@@ -25,15 +28,18 @@ export const onUpdateAgenda = /* GraphQL */ `
     onUpdateAgenda {
       id
       title
-      description
       firsttopic
       firstestimate
+      firstdescription
       secondtopic
       secondestimate
+      seconddescription
       thirdtopic
       thirdestimate
+      thirddescription
       fourthtopic
       fourthestimate
+      fourthdescription
       createdAt
       updatedAt
     }
@@ -44,15 +50,18 @@ export const onDeleteAgenda = /* GraphQL */ `
     onDeleteAgenda {
       id
       title
-      description
       firsttopic
       firstestimate
+      firstdescription
       secondtopic
       secondestimate
+      seconddescription
       thirdtopic
       thirdestimate
+      thirddescription
       fourthtopic
       fourthestimate
+      fourthdescription
       createdAt
       updatedAt
     }

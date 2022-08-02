@@ -16,12 +16,20 @@ const style = {
   pb: 2
 };  
 
-export default function StartAgenda({ open }) {
+export default function StartAgenda({ open, openAgenda, agendas }) {
+
+  const currentAgenda = agendas.filter(agenda => agenda.id === openAgenda )
 
   return (
         <Fade in={open}>
           <Box sx={style}>
-
+            {
+            currentAgenda.map(agenda => (
+                <>
+                    {agenda.title}
+                </>
+            ))
+            }
           </Box>
         </Fade>
   )

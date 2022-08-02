@@ -3,7 +3,7 @@ import { API } from 'aws-amplify';
 import { createAgenda as createAgendaMutation } from './../graphql/mutations';
 import { TextField, Button, Typography, Backdrop, Modal, Box, Fade } from "@mui/material";
 
-const initialFormState = { title: '', description: '', firsttopic: '', firstestimate: '', secondtopic: '', secondestimate: '', thirdtopic: '', thirdestimate: '', fourthtopic: '', fourthestimate: '' };
+const initialFormState = { title: '', firsttopic: '', firstestimate: '', firstdescription: '', secondtopic: '', secondestimate: '', seconddescription: '',thirdtopic: '', thirdestimate: '', thirddescription: '', fourthtopic: '', fourthestimate: '', fourthdescription: ''};
 
 const style = {
   position: 'absolute',
@@ -28,7 +28,7 @@ export default function NewAgenda({ agendas, setAgendas }) {
   const [formData, setFormData] = useState(initialFormState);
 
   async function createAgenda() {
-    if (!formData.title || !formData.description) return;
+    if (!formData.title) return;
     await API.graphql({ query: createAgendaMutation, variables: { input: formData } });
     setAgendas([ agendas, formData ]);
     setFormData(initialFormState);
@@ -60,13 +60,6 @@ export default function NewAgenda({ agendas, setAgendas }) {
               value={formData.title}
             />
             <TextField
-              sx={{ width: 1, mt: 1 }}
-              id="outlined-search"
-              label="Description"
-              onChange={e => setFormData({ ...formData, 'description': e.target.value})}
-              value={formData.description}
-            />
-            <TextField
               sx={{ width: "65%", mt: 1, ml: "8px" }}
               id="outlined-search"
               label="First Topic"
@@ -79,6 +72,13 @@ export default function NewAgenda({ agendas, setAgendas }) {
               label="time (minutes)"
               onChange={e => setFormData({ ...formData, 'firstestimate': e.target.value})}
               value={formData.firstestimate}
+            />
+            <TextField
+              sx={{ width: 1, mt: 1 }}
+              id="outlined-search"
+              label="Description"
+              onChange={e => setFormData({ ...formData, 'firstdescription': e.target.value})}
+              value={formData.firstdescription}
             />
             <TextField
               sx={{ width: "65%", mt: 1, ml: "8px" }}
@@ -95,6 +95,13 @@ export default function NewAgenda({ agendas, setAgendas }) {
               value={formData.secondestimate}
             />
             <TextField
+              sx={{ width: 1, mt: 1 }}
+              id="outlined-search"
+              label="Description"
+              onChange={e => setFormData({ ...formData, 'seconddescription': e.target.value})}
+              value={formData.seconddescription}
+            />
+            <TextField
               sx={{ width: "65%", mt: 1, ml: "8px" }}
               id="outlined-search"
               label="Third Topic"
@@ -109,6 +116,13 @@ export default function NewAgenda({ agendas, setAgendas }) {
               value={formData.thirdestimate}
             />
             <TextField
+              sx={{ width: 1, mt: 1 }}
+              id="outlined-search"
+              label="Description"
+              onChange={e => setFormData({ ...formData, 'thirddescription': e.target.value})}
+              value={formData.thirddescription}
+            />
+            <TextField
               sx={{ width: "65%", mt: 1, ml: "8px" }}
               id="outlined-search"
               label="Fourth Topic"
@@ -121,6 +135,13 @@ export default function NewAgenda({ agendas, setAgendas }) {
               label="time (minutes)"
               onChange={e => setFormData({ ...formData, 'fourthestimate': e.target.value})}
               value={formData.fourthestimate}
+            />
+            <TextField
+              sx={{ width: 1, mt: 1 }}
+              id="outlined-search"
+              label="Description"
+              onChange={e => setFormData({ ...formData, 'fourthdescription': e.target.value})}
+              value={formData.fourthdescription}
             />
             <Button onClick={createAgenda} variant="contained" sx={{ color: "#fffaf6", backgroundColor: "#11717d", mt: '10px', ml: "90px", width: "170px" }}>Create Agenda</Button>
           </Box>

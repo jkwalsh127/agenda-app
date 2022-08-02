@@ -46,6 +46,7 @@ export default function Agendas() {
     await API.graphql({ query: createAgendaMutation, variables: { input: formData } });
     setAgendas([ agendas, formData ]);
     setFormData(initialFormState);
+    handleClose();
   }
 
   async function deleteAgenda({ id }) {
@@ -61,7 +62,7 @@ export default function Agendas() {
           <Typography variant="title">Dashboard</Typography>
 
           <div>
-      <Button onClick={handleOpen}>Add Agenda</Button>
+      <Button onClick={handleOpen} variant="contained" sx={{ color: "#fffaf6", backgroundColor: "#11717d", mt: '10px', width: "150px" }}>Add Agenda</Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"

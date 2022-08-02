@@ -58,7 +58,14 @@ function Agendas() {
                 <div key={agenda.id || agenda.title}>
                   <h2>{agenda.title}</h2>
                   <p>{agenda.description}</p>
-                  <Button onClick={() => deleteAgenda(agenda)}>Delete agenda</Button>
+                  {/* {
+                    tasks.map(task => (
+                        <div key={task.id || task.title}>
+                        <h2>{task.title}</h2>
+                        <p>{task.estimate}</p>
+                    ))
+                  } */}
+                  <Button onClick={() => deleteAgenda(agenda)} sx={{ p: 5, m: 5 }}>Delete agenda</Button>
                 </div>
               ))
             }

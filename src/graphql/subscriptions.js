@@ -7,18 +7,14 @@ export const onCreateAgenda = /* GraphQL */ `
       id
       title
       description
-      topics {
-        items {
-          id
-          title
-          estimate
-          description
-          createdAt
-          updatedAt
-          agendaTopicsId
-        }
-        nextToken
-      }
+      firsttopic
+      firstestimate
+      secondtopic
+      secondestimate
+      thirdtopic
+      thirdestimate
+      fourthtopic
+      fourthestimate
       createdAt
       updatedAt
     }
@@ -30,18 +26,14 @@ export const onUpdateAgenda = /* GraphQL */ `
       id
       title
       description
-      topics {
-        items {
-          id
-          title
-          estimate
-          description
-          createdAt
-          updatedAt
-          agendaTopicsId
-        }
-        nextToken
-      }
+      firsttopic
+      firstestimate
+      secondtopic
+      secondestimate
+      thirdtopic
+      thirdestimate
+      fourthtopic
+      fourthestimate
       createdAt
       updatedAt
     }
@@ -53,89 +45,16 @@ export const onDeleteAgenda = /* GraphQL */ `
       id
       title
       description
-      topics {
-        items {
-          id
-          title
-          estimate
-          description
-          createdAt
-          updatedAt
-          agendaTopicsId
-        }
-        nextToken
-      }
+      firsttopic
+      firstestimate
+      secondtopic
+      secondestimate
+      thirdtopic
+      thirdestimate
+      fourthtopic
+      fourthestimate
       createdAt
       updatedAt
-    }
-  }
-`;
-export const onCreateTopic = /* GraphQL */ `
-  subscription OnCreateTopic {
-    onCreateTopic {
-      id
-      title
-      estimate
-      description
-      agenda {
-        id
-        title
-        description
-        topics {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-      agendaTopicsId
-    }
-  }
-`;
-export const onUpdateTopic = /* GraphQL */ `
-  subscription OnUpdateTopic {
-    onUpdateTopic {
-      id
-      title
-      estimate
-      description
-      agenda {
-        id
-        title
-        description
-        topics {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-      agendaTopicsId
-    }
-  }
-`;
-export const onDeleteTopic = /* GraphQL */ `
-  subscription OnDeleteTopic {
-    onDeleteTopic {
-      id
-      title
-      estimate
-      description
-      agenda {
-        id
-        title
-        description
-        topics {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-      agendaTopicsId
     }
   }
 `;

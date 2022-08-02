@@ -5,14 +5,13 @@ input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONL
 type Agenda @model {
   id: ID!
   title: String!
-  description: String
-  topics: [Topic] @hasMany
-}
-
-type Topic @model {
-  id: ID!
-  title: String!
-  estimate: String
-  description: String
-  agenda: Agenda @belongsTo
+  description: String!
+  firsttopic: String
+  firstestimate: String
+  secondtopic: String
+  secondestimate: String
+  thirdtopic: String
+  thirdestimate: String
+  fourthtopic: String
+  fourthestimate: String
 }

@@ -19,7 +19,8 @@ const theme = createTheme({
   },
   typography: {
     myVariant: {
-      fontSize: "3rem"
+      fontSize: "3rem",
+      color: '#FFC'
     }
   }
 });

@@ -7,18 +7,14 @@ export const getAgenda = /* GraphQL */ `
       id
       title
       description
-      topics {
-        items {
-          id
-          title
-          estimate
-          description
-          createdAt
-          updatedAt
-          agendaTopicsId
-        }
-        nextToken
-      }
+      firsttopic
+      firstestimate
+      secondtopic
+      secondestimate
+      thirdtopic
+      thirdestimate
+      fourthtopic
+      fourthestimate
       createdAt
       updatedAt
     }
@@ -35,61 +31,16 @@ export const listAgenda = /* GraphQL */ `
         id
         title
         description
-        topics {
-          nextToken
-        }
+        firsttopic
+        firstestimate
+        secondtopic
+        secondestimate
+        thirdtopic
+        thirdestimate
+        fourthtopic
+        fourthestimate
         createdAt
         updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const getTopic = /* GraphQL */ `
-  query GetTopic($id: ID!) {
-    getTopic(id: $id) {
-      id
-      title
-      estimate
-      description
-      agenda {
-        id
-        title
-        description
-        topics {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-      agendaTopicsId
-    }
-  }
-`;
-export const listTopics = /* GraphQL */ `
-  query ListTopics(
-    $filter: ModelTopicFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listTopics(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        title
-        estimate
-        description
-        agenda {
-          id
-          title
-          description
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-        agendaTopicsId
       }
       nextToken
     }

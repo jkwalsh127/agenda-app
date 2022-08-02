@@ -10,18 +10,14 @@ export const createAgenda = /* GraphQL */ `
       id
       title
       description
-      topics {
-        items {
-          id
-          title
-          estimate
-          description
-          createdAt
-          updatedAt
-          agendaTopicsId
-        }
-        nextToken
-      }
+      firsttopic
+      firstestimate
+      secondtopic
+      secondestimate
+      thirdtopic
+      thirdestimate
+      fourthtopic
+      fourthestimate
       createdAt
       updatedAt
     }
@@ -36,18 +32,14 @@ export const updateAgenda = /* GraphQL */ `
       id
       title
       description
-      topics {
-        items {
-          id
-          title
-          estimate
-          description
-          createdAt
-          updatedAt
-          agendaTopicsId
-        }
-        nextToken
-      }
+      firsttopic
+      firstestimate
+      secondtopic
+      secondestimate
+      thirdtopic
+      thirdestimate
+      fourthtopic
+      fourthestimate
       createdAt
       updatedAt
     }
@@ -62,98 +54,16 @@ export const deleteAgenda = /* GraphQL */ `
       id
       title
       description
-      topics {
-        items {
-          id
-          title
-          estimate
-          description
-          createdAt
-          updatedAt
-          agendaTopicsId
-        }
-        nextToken
-      }
+      firsttopic
+      firstestimate
+      secondtopic
+      secondestimate
+      thirdtopic
+      thirdestimate
+      fourthtopic
+      fourthestimate
       createdAt
       updatedAt
-    }
-  }
-`;
-export const createTopic = /* GraphQL */ `
-  mutation CreateTopic(
-    $input: CreateTopicInput!
-    $condition: ModelTopicConditionInput
-  ) {
-    createTopic(input: $input, condition: $condition) {
-      id
-      title
-      estimate
-      description
-      agenda {
-        id
-        title
-        description
-        topics {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-      agendaTopicsId
-    }
-  }
-`;
-export const updateTopic = /* GraphQL */ `
-  mutation UpdateTopic(
-    $input: UpdateTopicInput!
-    $condition: ModelTopicConditionInput
-  ) {
-    updateTopic(input: $input, condition: $condition) {
-      id
-      title
-      estimate
-      description
-      agenda {
-        id
-        title
-        description
-        topics {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-      agendaTopicsId
-    }
-  }
-`;
-export const deleteTopic = /* GraphQL */ `
-  mutation DeleteTopic(
-    $input: DeleteTopicInput!
-    $condition: ModelTopicConditionInput
-  ) {
-    deleteTopic(input: $input, condition: $condition) {
-      id
-      title
-      estimate
-      description
-      agenda {
-        id
-        title
-        description
-        topics {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-      agendaTopicsId
     }
   }
 `;

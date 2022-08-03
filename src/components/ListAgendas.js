@@ -17,8 +17,7 @@ export default function ListAgendas({ agendas, setAgendas, fetchAgendas, setOpen
   }
 
   return (
-  <div style={{ width: "100%", display: "flex", flexDirection: "column" }}>
-    <Typography variant="header">Agendas</Typography>
+  <div style={{ width: "100%", display: "flex", flexDirection: "column", marginTop: "20px" }}>
     {
       agendas.map(agenda => (
         <Accordion  sx={{ backgroundColor: "#64bfc4", width: "90%", alignSelf: "center" }}>

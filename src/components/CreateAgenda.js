@@ -3,6 +3,7 @@ import { API } from 'aws-amplify';
 import { createAgenda as createAgendaMutation } from '../graphql/mutations';
 import { TextField, Button, Typography, Backdrop, Modal, Box, Fade } from "@mui/material";
 
+
 const initialFormState = { title: '', firsttopic: '', firstestimate: '', firstdescription: '', secondtopic: '', secondestimate: '', seconddescription: '',thirdtopic: '', thirdestimate: '', thirddescription: '', fourthtopic: '', fourthestimate: '', fourthdescription: ''};
 
 const style = {
@@ -20,10 +21,7 @@ const style = {
   pb: 2
 };  
 
-export default function CreateAgenda({ agendas, setAgendas, fetchAgendas }) {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+export default function CreateAgenda({ agendas, setAgendas, fetchAgendas, open, handleClose }) {
 
   const [formData, setFormData] = useState(initialFormState);
 
@@ -38,7 +36,6 @@ export default function CreateAgenda({ agendas, setAgendas, fetchAgendas }) {
 
   return (
     <div>
-      <Button onClick={handleOpen} variant="contained" sx={{ color: "#fffaf6", backgroundColor: "#11717d", mt: '10px', width: "150px" }}>Add Agenda</Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"

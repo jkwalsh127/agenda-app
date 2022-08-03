@@ -2,11 +2,15 @@ import React, { useState, useEffect } from 'react';
 import '@aws-amplify/ui-react/styles.css';
 import { API } from 'aws-amplify';
 import { listAgenda } from '../graphql/queries';
-import { Card, Typography } from "@mui/material";
+import { Card, Typography, Fab, Tooltip, Zoom } from "@mui/material";
 import CreateAgenda from './CreateAgenda';
 import ListAgendas from './ListAgendas';
+import { Add } from '@mui/icons-material';
 
 export default function Dashboard() {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const [agendas, setAgendas] = useState([]);
 
@@ -23,9 +27,18 @@ export default function Dashboard() {
 
   return (
     <Card variant="outlined">
-      <Typography variant="title">Dashboard</Typography>
-      <CreateAgenda agendas={agendas} setAgendas={setAgendas} fetchAgendas={fetchAgendas}/>
-      <ListAgendas agendas={agendas} setAgendas={setAgendas} fetchAgendas={fetchAgendas}/>
+      <div style={{display: "flex"}}>
+        <Typography variant="title">Agendas</Typography>
+        <div style={{position: "absolute", margin: "20px 0 0 270px"}}>
+          <Tooltip title="Add Agenda" placement="right" arrow TransitionComponent={Zoom} variant="root">
+            <Fab color="secondary" aria-label="add" size="small">
+              <Add onClick={handleOpen}/>
+            </Fab>
+          </Tooltip>
+        </div>
+      </div>
+      <CreateAgenda agendas={agendas} setAgendas={setAgendas} fetchAgendas={fetchAgendas} open={open} handleClose={handleClose} />
+      <ListAgendas agendas={agendas} setAgendas={setAgendas} fetchAgendas={fetchAgendas} />
     </Card>
   );
 }

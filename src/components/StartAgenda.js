@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Fade, Grid, Pagination } from "@mui/material";
+import { Box, Fade, Grid, Pagination, Modal, Backdrop } from "@mui/material";
 
 const style = {
   position: 'absolute',
@@ -16,7 +16,7 @@ const style = {
   pb: 2
 };  
 
-export default function StartAgenda({ open, openAgenda, agendas }) {
+export default function StartAgenda({ open, openAgenda, agendas, handleClose }) {
   const [page, setPage] = useState(1)
 
   const currentAgenda = agendas.filter(agenda => agenda.id === openAgenda );
@@ -26,110 +26,122 @@ export default function StartAgenda({ open, openAgenda, agendas }) {
   };
 
   return (
-        <Fade in={open}>
-          <Box sx={style}>
-            {
-                currentAgenda.map(agenda => (
-                    
-                    page === 1 ? 
-                        <Grid container spacing={0}>
-        
-                            <Grid item xs={12} sx={{}}>
-                                {agenda.title}
-                            </Grid>
-
-                            <Grid item xs={12} sx={{display: agenda.firsttopic ? "flex" : "none"}}>
-                                <Grid item xs={7} sx={{}}>
-                                    {agenda.firsttopic}
-                                </Grid>
-                                <Grid item xs={3} sx={{}}>
-                                    {"timer"}
-                                </Grid>
-                            </Grid>
-
-                            <Grid item xs={12}>
-                                {agenda.firstdescription}
-                            </Grid>
-
-                        </Grid>
-                    : page === 2 ?
-                        <Grid container spacing={0}>
-            
-                            <Grid item xs={12} sx={{}}>
-                                {agenda.title}
-                            </Grid>
-
-                            <Grid item xs={12} sx={{display: agenda.secondtopic ? "flex" : "none"}}>
-                                <Grid item xs={7} sx={{}}>
-                                    {agenda.secondtopic}
-                                </Grid>
-                                <Grid item xs={3} sx={{}}>
-                                    {"timer"}
-                                </Grid>
-                            </Grid>
-
-                            <Grid item xs={12}>
-                                {agenda.seconddescription}
-                            </Grid>
-
-                        </Grid>
-                    : page === 3 ?
-                        <Grid container spacing={0}>
-            
-                            <Grid item xs={12} sx={{}}>
-                                {agenda.title}
-                            </Grid>
-
-                            <Grid item xs={12} sx={{display: agenda.thirdtopic ? "flex" : "none"}}>
-                                <Grid item xs={7} sx={{}}>
-                                    {agenda.thirdtopic}
-                                </Grid>
-                                <Grid item xs={3} sx={{}}>
-                                    {"timer"}
-                                </Grid>
-                            </Grid>
-
-                            <Grid item xs={12}>
-                                {agenda.thirddescription}
-                            </Grid>
-
-                        </Grid>
-                    :
-                        <Grid container spacing={0}>
-            
-                            <Grid item xs={12} sx={{}}>
-                                {agenda.title}
-                            </Grid>
-
-                            <Grid item xs={12} sx={{display: agenda.fourthtopic ? "flex" : "none"}}>
-                                <Grid item xs={7} sx={{}}>
-                                    {agenda.fourthtopic}
-                                </Grid>
-                                <Grid item xs={3} sx={{}}>
-                                    {"timer"}
-                                </Grid>
-                            </Grid>
-
-                            <Grid item xs={12}>
-                                {agenda.fourthdescription}
-                            </Grid>
-
-                        </Grid>
-                ))
-            }
-            {
+    <Modal
+      aria-labelledby="transition-modal-title"
+      aria-describedby="transition-modal-description"
+      open={open}
+      onClose={handleClose}
+      closeAfterTransition
+      BackdropComponent={Backdrop}
+      BackdropProps={{
+        timeout: 500,
+      }}
+    >
+      <Fade in={open}>
+        <Box sx={style}>
+          {
             currentAgenda.map(agenda => (
-                <>
+                  
+              page === 1 ? 
+                <Grid container spacing={0}>
+      
+                  <Grid item xs={12} sx={{}}>
+                    {agenda.title}
+                  </Grid>
+  
+                  <Grid item xs={12} sx={{display: agenda.firsttopic ? "flex" : "none"}}>
+                    <Grid item xs={7} sx={{}}>
+                      {agenda.firsttopic}
+                    </Grid>
+                    <Grid item xs={3} sx={{}}>
+                      {"timer"}
+                    </Grid>
+                  </Grid>
+  
+                  <Grid item xs={12}>
+                    {agenda.firstdescription}
+                  </Grid>
+  
+                </Grid>
+              : page === 2 ?
+                <Grid container spacing={0}>
+              
+                  <Grid item xs={12} sx={{}}>
+                    {agenda.title}
+                  </Grid>
+  
+                  <Grid item xs={12} sx={{display: agenda.secondtopic ? "flex" : "none"}}>
+                    <Grid item xs={7} sx={{}}>
+                      {agenda.secondtopic}
+                    </Grid>
+                    <Grid item xs={3} sx={{}}>
+                      {"timer"}
+                    </Grid>
+                  </Grid>
+  
+                  <Grid item xs={12}>
+                    {agenda.seconddescription}
+                  </Grid>
+  
+                </Grid>
+              : page === 3 ?
+                <Grid container spacing={0}>
+              
+                  <Grid item xs={12} sx={{}}>
+                    {agenda.title}
+                  </Grid>
+  
+                  <Grid item xs={12} sx={{display: agenda.thirdtopic ? "flex" : "none"}}>
+                    <Grid item xs={7} sx={{}}>
+                      {agenda.thirdtopic}
+                    </Grid>
+                    <Grid item xs={3} sx={{}}>
+                      {"timer"}
+                    </Grid>
+                  </Grid>
+  
+                  <Grid item xs={12}>
+                    {agenda.thirddescription}
+                  </Grid>
+  
+                </Grid>
+              :
+                <Grid container spacing={0}>
+              
+                <Grid item xs={12} sx={{}}>
+                  {agenda.title}
+                </Grid>
+  
+                <Grid item xs={12} sx={{display: agenda.fourthtopic ? "flex" : "none"}}>
+                  <Grid item xs={7} sx={{}}>
+                    {agenda.fourthtopic}
+                  </Grid>
+                  <Grid item xs={3} sx={{}}>
+                    {"timer"}
+                  </Grid>
+                </Grid>
+  
+                <Grid item xs={12}>
+                  {agenda.fourthdescription}
+                </Grid>
+  
+              </Grid>
+            ))
+          }
+          {
+            currentAgenda.map(agenda => (
+              <>
                 <Pagination 
                     color="primary" 
                     count={agenda.secondtopic === "" ? 1 : agenda.thirdtopic === "" ? 2 : agenda.fourthtopic === "" ? 3 : 4 } 
                     onChange={handlePageChange}
                     page={page}
                 />
-                </>
+              </>
             ))
-            }
-          </Box>
-        </Fade>
+          }
+        </Box>
+      </Fade>
+    </Modal>
   )
 }

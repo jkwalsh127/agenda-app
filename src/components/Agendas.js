@@ -4,7 +4,7 @@ import { API } from 'aws-amplify';
 import { Authenticator } from '@aws-amplify/ui-react';
 import { listAgenda } from './../graphql/queries';
 import { deleteAgenda as deleteAgendaMutation } from './../graphql/mutations';
-import { Card, Typography, Modal, Backdrop } from "@mui/material";
+import { Card, Typography } from "@mui/material";
 import NewAgenda from './NewAgenda';
 import StartAgenda from './StartAgenda';
 import ListAgendas from './ListAgendas';
@@ -43,21 +43,9 @@ export default function Agendas() {
         <Card variant="outlined" sx={{ border: "3px solid #f4673c", maxWidth: 500, width: "60%", minHeight: 400, display: "flex", flexDirection: "column", alignItems: "center", justifySelf: "center", marginTop: 3, marginBottom: 5, padding: 2, overflow: "scroll" }}>
           <Typography variant="title">Dashboard</Typography>
 
-          <NewAgenda agendas={agendas} setAgendas={setAgendas} />
+            <NewAgenda agendas={agendas} setAgendas={setAgendas} />
 
-          <Modal
-            aria-labelledby="transition-modal-title"
-            aria-describedby="transition-modal-description"
-            open={open}
-            onClose={handleClose}
-            closeAfterTransition
-            BackdropComponent={Backdrop}
-            BackdropProps={{
-              timeout: 500,
-            }}
-          >
-            <StartAgenda open={open} openAgenda={openAgenda} agendas={agendas} />
-          </Modal>
+            <StartAgenda open={open} openAgenda={openAgenda} agendas={agendas} handleClose={handleClose} />
 
             <ListAgendas agendas={agendas} deleteAgenda={deleteAgenda} startAgenda={startAgenda} />
           

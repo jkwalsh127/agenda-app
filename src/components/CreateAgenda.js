@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { API } from 'aws-amplify';
 import { createAgenda as createAgendaMutation } from '../graphql/mutations';
 import { TextField, Button, Typography, Backdrop, Modal, Box, Fade } from "@mui/material";
+import ErrorModal from './ErrorModal';
 
 
 const initialFormState = { title: '', firsttopic: '', firstestimate: '', firstdescription: '', secondtopic: '', secondestimate: '', seconddescription: '',thirdtopic: '', thirdestimate: '', thirddescription: '', fourthtopic: '', fourthestimate: '', fourthdescription: ''};
@@ -28,8 +29,17 @@ export default function CreateAgenda({ agendas, setAgendas, fetchAgendas, open, 
 
   const [formData, setFormData] = useState(initialFormState);
 
+  const [openErrorModal, setOpenErrorModal] = useState(false);
+  const handleOpenErrorModal = () => setOpenErrorModal(true);
+
   async function createAgenda() {
-    if (!formData.title) return;
+    if (!formData.title || !formData.firsttopic || !formData.firstestimate || !formData.firstdescription ||
+      (formData.secondtopic && (!formData.secondestimate || !formData.seconddescription)) ||
+      (formData.thirdtopic && (!formData.thirdestimate || !formData.thirddescription)) ||
+      (formData.fourthtopic && (!formData.fourthestimate || !formData.fourthdescription))) {
+        handleOpenErrorModal();
+        return;
+    };
     await API.graphql({ query: createAgendaMutation, variables: { input: formData } });
     setAgendas([ agendas, formData ]);
     setFormData(initialFormState);
@@ -168,6 +178,7 @@ export default function CreateAgenda({ agendas, setAgendas, fetchAgendas, open, 
             <Button onClick={createAgenda} variant="contained" sx={{ color: "#fffaf6", backgroundColor: "#11717d", mt: '10px', width: "170px" }}>
                 Create Agenda
             </Button>
+            <ErrorModal openErrorModal={openErrorModal} setOpenErrorModal={setOpenErrorModal} formData={formData} />
           </Box>
         </Fade>
       </Modal>

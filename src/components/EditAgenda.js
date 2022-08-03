@@ -4,8 +4,6 @@ import { updateAgenda as updateAgendaMutation } from '../graphql/mutations';
 import { TextField, Button, Typography, Backdrop, Modal, Box, Fade, Zoom, Tooltip } from "@mui/material";
 import { Edit } from '@mui/icons-material';
 
-
-
 const style = {
   position: 'absolute',
   top: '50%',

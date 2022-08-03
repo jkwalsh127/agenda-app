@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PlayArrow } from '@mui/icons-material';
-import { Button, Pagination, Backdrop, Modal, Box, Fade, Zoom, Tooltip, Grid } from "@mui/material";
+import { Button, Pagination, Backdrop, Modal, Box, Fade, Zoom, Tooltip, Grid, Typography } from "@mui/material";
 
 const style = {
   position: 'absolute',
@@ -11,9 +11,9 @@ const style = {
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
-  pl: 8,
-  pr: 8,
-  pt: 2,
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
   pb: 2
 };  
 
@@ -58,101 +58,142 @@ export default function StartAgenda({ openAgenda, setOpenAgenda, agendas, agenda
                 currentAgenda.map(agenda => (
 
                   page === 1 ? 
-                    <Grid container spacing={0}>
+                    <Grid container spacing={0} sx={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+                        
+                        <Grid item xs={12} sx={{backgroundColor: "#11717d", width: "100%", height: "100px", padding: "5px 0 5px 15px"}}>
+                            <Typography variant="agendaTitleStart">
+                                {agenda.title}
+                            </Typography>
+                        </Grid>
                     
-                      <Grid item xs={12} sx={{}}>
-                        {agenda.title}
-                      </Grid>
-                
-                      <Grid item xs={12} sx={{display: agenda.firsttopic ? "flex" : "none"}}>
-                        <Grid item xs={7} sx={{}}>
-                          {agenda.firsttopic}
-                        </Grid>
-                        <Grid item xs={3} sx={{}}>
-                          {"timer"}
-                        </Grid>
-                      </Grid>
-                
-                      <Grid item xs={12}>
-                        {agenda.firstdescription}
-                      </Grid>
+                        <div style={{padding: "0 40px", width: "100%"}}>
+                            <Grid item xs={12} sx={{display: agenda.firsttopic ? "flex" : "none"}}>
+                                <Grid item xs={7} sx={{mt: "20px"}}>
+                                    <Typography variant="agendaTopicStart">
+                                        {agenda.firsttopic}
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={3} sx={{mt: "30px", ml: "100px"}}>
+                                    <Typography variant="agendaEstimateStart">
+                                        {agenda.firstestimate}{" min"}
+                                    </Typography>
+                                </Grid>
+                            </Grid>
+                        
+                            <Grid item xs={12} sx={{mt: "10px"}}>
+                                <Typography variant="agendaDescriptionStart">
+                                    {agenda.firstdescription}
+                                </Typography>
+                            </Grid>
+                        </div>
                 
                     </Grid>
                   : page === 2 ?
-                    <Grid container spacing={0}>
+                    <Grid container spacing={0} sx={{display: "flex", flexDirection: "column", alignItems: "center"}}>
                     
-                      <Grid item xs={12} sx={{}}>
-                        {agenda.title}
+                      <Grid item xs={12} sx={{backgroundColor: "#11717d", width: "100%", height: "100px", padding: "5px 0 5px 15px"}}>
+                        <Typography variant="agendaTitleStart">
+                            {agenda.title}
+                        </Typography>
                       </Grid>
                 
-                      <Grid item xs={12} sx={{display: agenda.secondtopic ? "flex" : "none"}}>
-                        <Grid item xs={7} sx={{}}>
-                          {agenda.secondtopic}
+                      <div style={{padding: "0 40px", width: "100%"}}>
+                        <Grid item xs={12} sx={{display: agenda.secondtopic ? "flex" : "none"}}>
+                            <Grid item xs={7} sx={{mt: "20px"}}>
+                                <Typography variant="agendaTopicStart">
+                                    {agenda.secondtopic}
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={3} sx={{mt: "30px", ml: "100px"}}>
+                                <Typography variant="agendaEstimateStart">
+                                    {agenda.secondestimate}{" min"}
+                                </Typography>
+                            </Grid>
                         </Grid>
-                        <Grid item xs={3} sx={{}}>
-                          {"timer"}
+                    
+                        <Grid item xs={12} sx={{mt: "10px"}}>
+                            <Typography variant="agendaDescriptionStart">
+                                {agenda.seconddescription}
+                            </Typography>
                         </Grid>
-                      </Grid>
-                
-                      <Grid item xs={12}>
-                        {agenda.seconddescription}
-                      </Grid>
+                      </div>
                 
                     </Grid>
                   : page === 3 ?
-                    <Grid container spacing={0}>
+                    <Grid container spacing={0} sx={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+                        
+                        <Grid item xs={12} sx={{backgroundColor: "#11717d", width: "100%", height: "100px", padding: "5px 0 5px 15px"}}>
+                            <Typography variant="agendaTitleStart">
+                                {agenda.title}
+                            </Typography>
+                        </Grid>
                     
-                      <Grid item xs={12} sx={{}}>
-                        {agenda.title}
-                      </Grid>
-                
-                      <Grid item xs={12} sx={{display: agenda.thirdtopic ? "flex" : "none"}}>
-                        <Grid item xs={7} sx={{}}>
-                          {agenda.thirdtopic}
-                        </Grid>
-                        <Grid item xs={3} sx={{}}>
-                          {"timer"}
-                        </Grid>
-                      </Grid>
-                
-                      <Grid item xs={12}>
-                        {agenda.thirddescription}
-                      </Grid>
+                        <div style={{padding: "0 40px", width: "100%"}}>
+                            <Grid item xs={12} sx={{display: agenda.thirdtopic ? "flex" : "none"}}>
+                                <Grid item xs={7} sx={{mt: "20px"}}>
+                                    <Typography variant="agendaTopicStart">
+                                        {agenda.thirdtopic}
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={3} sx={{mt: "30px", ml: "100px"}}>
+                                    <Typography variant="agendaEstimateStart">
+                                        {agenda.thirdestimate}{" min"}
+                                    </Typography>
+                                </Grid>
+                            </Grid>
+                        
+                            <Grid item xs={12} sx={{mt: "10px"}}>
+                                <Typography variant="agendaDescriptionStart">
+                                    {agenda.thirddescription}
+                                </Typography>
+                            </Grid>
+                        </div>
                 
                     </Grid>
                   :
-                    <Grid container spacing={0}>
+                    <Grid container spacing={0} sx={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+                        
+                        <Grid item xs={12} sx={{backgroundColor: "#11717d", width: "100%", height: "100px", padding: "5px 0 5px 15px"}}>
+                            <Typography variant="agendaTitleStart">
+                                {agenda.title}
+                            </Typography>
+                        </Grid>
                     
-                    <Grid item xs={12} sx={{}}>
-                      {agenda.title}
-                    </Grid>
+                        <div style={{padding: "0 40px", width: "100%"}}>
+                            <Grid item xs={12} sx={{display: agenda.fourthtopic ? "flex" : "none"}}>
+                                <Grid item xs={7} sx={{mt: "20px"}}>
+                                    <Typography variant="agendaTopicStart">
+                                        {agenda.fourthtopic}
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={3} sx={{mt: "30px", ml: "100px"}}>
+                                    <Typography variant="agendaEstimateStart">
+                                        {agenda.fourthestimate}{" min"}
+                                    </Typography>
+                                </Grid>
+                            </Grid>
+                        
+                            <Grid item xs={12} sx={{mt: "10px"}}>
+                                <Typography variant="agendaDescriptionStart">
+                                    {agenda.fourthdescription}
+                                </Typography>
+                            </Grid>
+                        </div>
                 
-                    <Grid item xs={12} sx={{display: agenda.fourthtopic ? "flex" : "none"}}>
-                      <Grid item xs={7} sx={{}}>
-                        {agenda.fourthtopic}
-                      </Grid>
-                      <Grid item xs={3} sx={{}}>
-                        {"timer"}
-                      </Grid>
                     </Grid>
-                
-                    <Grid item xs={12}>
-                      {agenda.fourthdescription}
-                    </Grid>
-                
-                  </Grid>
                 ))
               }
               {
                 currentAgenda.map(agenda => (
-                  <>
+                  <div style={{display: "flex", justifyContent: "center", postition: "absolute", bottom: "0px", marginTop: "30px"}}>
                     <Pagination 
                         color="primary" 
                         count={agenda.secondtopic === "" ? 1 : agenda.thirdtopic === "" ? 2 : agenda.fourthtopic === "" ? 3 : 4 } 
                         onChange={handlePageChange}
                         page={page}
+                        size="large"
                     />
-                  </>
+                  </div>
                 ))
               }
             </Box>

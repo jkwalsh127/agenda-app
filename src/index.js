@@ -55,6 +55,31 @@ const theme = createTheme({
           fontWeight: "bold" ,
           fontFamily: "commuters-sans, 'Open Sans', 'Helvetica Neue', sans-serif",
         },
+        agendaTitleStart: {
+          fontSize: "44px", 
+          marginLeft: "10px", 
+          color: "#64bfc3", 
+          fontWeight: "bold" ,
+          fontFamily: "commuters-sans, 'Open Sans', 'Helvetica Neue', sans-serif",
+        },
+        agendaTopicStart: {
+          fontSize: "36px", 
+          color: "#11717d", 
+          fontWeight: "bold" ,
+          fontFamily: "commuters-sans, 'Open Sans', 'Helvetica Neue', sans-serif",
+        },
+        agendaEstimateStart: {
+          fontSize: "28px", 
+          color: "#000000", 
+          marginTop: "25px",
+          fontFamily: "museo-sans, 'Open Sans', 'Helvetica Neue', sans-serif",
+        },
+        agendaDescriptionStart: {
+          fontSize: "22px", 
+          color: "#000000", 
+          marginTop: "25px",
+          fontFamily: "museo-sans, 'Open Sans', 'Helvetica Neue', sans-serif",
+        },
         descriptor: {
           color: "#12707d", 
           textAlign: "center",

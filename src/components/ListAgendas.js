@@ -99,7 +99,7 @@ export default function ListAgendas({ agendas, setAgendas, fetchAgendas, setOpen
                       aria-label="outlined primary button group"
                       variant="contained"
                     > 
-                      <StartAgenda agendas={agendas} setAgendas={setAgendas} setOpenAgenda={setOpenAgenda} agenda={agenda}/>
+                      <StartAgenda agendas={agendas} openAgenda={agenda.id} setOpenAgenda={setOpenAgenda} agenda={agenda}/>
                       <EditAgenda agendas={agendas} setAgendas={setAgendas} agendaId={agenda.id} agenda={agenda} fetchAgendas={fetchAgendas} />
                       <Tooltip title="Delete" placement="bottom" arrow TransitionComponent={Zoom} >
                         <Button variant="contained" sx={{ ml: "0px", p: "3px" }}>

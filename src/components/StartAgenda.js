@@ -101,9 +101,9 @@ export default function StartAgenda({ open, openAgenda, agendas }) {
                                 {agenda.title}
                             </Grid>
 
-                            <Grid item xs={12} sx={{display: agenda.thirdtopic ? "flex" : "none"}}>
+                            <Grid item xs={12} sx={{display: agenda.fourthtopic ? "flex" : "none"}}>
                                 <Grid item xs={7} sx={{}}>
-                                    {agenda.thirdtopic}
+                                    {agenda.fourthtopic}
                                 </Grid>
                                 <Grid item xs={3} sx={{}}>
                                     {"timer"}
@@ -111,7 +111,7 @@ export default function StartAgenda({ open, openAgenda, agendas }) {
                             </Grid>
 
                             <Grid item xs={12}>
-                                {agenda.thirddescription}
+                                {agenda.fourthdescription}
                             </Grid>
 
                         </Grid>
@@ -129,7 +129,6 @@ export default function StartAgenda({ open, openAgenda, agendas }) {
                 </>
             ))
             }
-
           </Box>
         </Fade>
   )

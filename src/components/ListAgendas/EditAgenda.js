@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { API } from 'aws-amplify';
-import { updateAgenda as updateAgendaMutation } from '../graphql/mutations';
+import { updateAgenda as updateAgendaMutation } from '../../graphql/mutations';
 import { TextField, Button, Typography, Backdrop, Modal, Box, Fade, Zoom, Tooltip } from "@mui/material";
 import { Edit } from '@mui/icons-material';
 

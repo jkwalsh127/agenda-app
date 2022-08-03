@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { PlayArrow } from '@mui/icons-material';
 import { Button, Pagination, Backdrop, Modal, Box, Fade, Zoom, Tooltip, Grid, Typography } from "@mui/material";
 import { API } from 'aws-amplify';
-import { updateAgenda as updateAgendaMutation } from '../graphql/mutations';
+import { updateAgenda as updateAgendaMutation } from '../../graphql/mutations';
 
 const style = {
   position: 'absolute',

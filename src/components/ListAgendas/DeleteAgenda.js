@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Typography, Backdrop, Modal, Box, Fade, Zoom, Tooltip } from "@mui/material";
 import { API } from 'aws-amplify';
-import { deleteAgenda as deleteAgendaMutation } from './../graphql/mutations';
+import { deleteAgenda as deleteAgendaMutation } from '../../graphql/mutations';
 import { RemoveCircleOutline } from '@mui/icons-material';
 
 

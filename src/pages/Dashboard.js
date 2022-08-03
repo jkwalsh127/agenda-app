@@ -4,7 +4,7 @@ import { API } from 'aws-amplify';
 import { listAgenda } from '../graphql/queries';
 import { Card, Typography, Fab, Tooltip, Zoom } from "@mui/material";
 import CreateAgenda from '../components/CreateAgenda';
-import ListAgendas from '../components/ListAgendas';
+import ListAgendas from '../components/ListAgendas/ListAgendas';
 import { Add } from '@mui/icons-material';
 
 export default function Dashboard() {

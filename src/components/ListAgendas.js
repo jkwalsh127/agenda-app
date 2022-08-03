@@ -1,15 +1,19 @@
-import { Button, Typography, Accordion, AccordionSummary, Grid, Tooltip, Zoom } from "@mui/material";
-import { ExpandMore, PlayArrow, RemoveCircleOutline } from '@mui/icons-material';
+import React from 'react';
+import { Button, Typography, Accordion, AccordionSummary, Grid, Tooltip, Zoom, Box } from "@mui/material";
+import { ExpandMore, RemoveCircleOutline } from '@mui/icons-material';
 import { ButtonGroup } from '@aws-amplify/ui-react';
 import { API } from 'aws-amplify';
 import { deleteAgenda as deleteAgendaMutation } from './../graphql/mutations';
+import EditAgenda from "./EditAgenda";
+import StartAgenda from './StartAgenda';
 
-export default function ListAgendas({ agendas, setAgendas, startAgenda }) {
+export default function ListAgendas({ agendas, setAgendas, fetchAgendas, setOpenAgenda }) {
 
   async function deleteAgenda({ id }) {
     const newAgendasArray = agendas.filter(agenda => agenda.id !== id);
     setAgendas(newAgendasArray);
     await API.graphql({ query: deleteAgendaMutation, variables: { input: { id } }});
+    fetchAgendas();
   }
 
   return (
@@ -88,24 +92,24 @@ export default function ListAgendas({ agendas, setAgendas, startAgenda }) {
                   </Grid>
                 </Grid>
 
-                <Grid item xs={7}></Grid>
-                <Grid item xs={5}>
-                  <ButtonGroup
-                    aria-label="outlined primary button group"
-                    variant="contained"
-                  > 
-                    <Tooltip title="Delete" placement="bottom" arrow TransitionComponent={Zoom} >
-                      <Button variant="contained" sx={{ ml: "0px", p: "3px" }}>
-                        <RemoveCircleOutline onClick={() => deleteAgenda(agenda)} xs={{fontSize: "large"}}></RemoveCircleOutline>
-                      </Button>
-                    </Tooltip>
-                    <Tooltip title="Begin Agenda" placement="bottom" arrow TransitionComponent={Zoom}>
-                      <Button variant="contained" sx={{ ml: "0px", p: "3px" }}>
-                        <PlayArrow onClick={() => startAgenda(agenda)}></PlayArrow>
-                      </Button>
-                    </Tooltip>
-                  </ButtonGroup>
+                <Grid item xs={3}></Grid>
+                <Grid item xs={6}>
+                  <Box sx={{display: "flex", flexDirection: 'column', alignItems: "center", '& > *': {m: 1}}}>
+                    <ButtonGroup
+                      aria-label="outlined primary button group"
+                      variant="contained"
+                    > 
+                      <StartAgenda agendas={agendas} setAgendas={setAgendas} setOpenAgenda={setOpenAgenda} agenda={agenda}/>
+                      <EditAgenda agendas={agendas} setAgendas={setAgendas} agendaId={agenda.id} agenda={agenda} fetchAgendas={fetchAgendas} />
+                      <Tooltip title="Delete" placement="bottom" arrow TransitionComponent={Zoom} >
+                        <Button variant="contained" sx={{ ml: "0px", p: "3px" }}>
+                          <RemoveCircleOutline onClick={() => deleteAgenda(agenda)} xs={{fontSize: "large"}}></RemoveCircleOutline>
+                        </Button>
+                      </Tooltip>
+                    </ButtonGroup>
+                  </Box>
                 </Grid>
+                <Grid item xs={3}></Grid>
 
               </Grid>
             </div>

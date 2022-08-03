@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import '@aws-amplify/ui-react/styles.css';
 import { Authenticator } from '@aws-amplify/ui-react';
-import Agendas from './components/Agendas';
+import Dashboard from './components/Dashboard';
 import { Button, Avatar } from "@mui/material";
 import footerBackground from "./images/footerBackground.jpg";
 
@@ -22,7 +22,7 @@ function App() {
                 </div>
               </header>
             </div>
-            <Agendas />
+            <Dashboard />
           </div>
         </>
       )}

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { API } from 'aws-amplify';
-import { createAgenda as createAgendaMutation } from '../graphql/mutations';
-import { TextField, Button, Typography, Backdrop, Modal, Box, Fade } from "@mui/material";
+import { updateAgenda as updateAgendaMutation } from '../graphql/mutations';
+import { TextField, Button, Typography, Backdrop, Modal, Box, Fade, Zoom, Tooltip } from "@mui/material";
+import { Edit } from '@mui/icons-material';
 
-const initialFormState = { title: '', firsttopic: '', firstestimate: '', firstdescription: '', secondtopic: '', secondestimate: '', seconddescription: '',thirdtopic: '', thirdestimate: '', thirddescription: '', fourthtopic: '', fourthestimate: '', fourthdescription: ''};
+
 
 const style = {
   position: 'absolute',
@@ -20,16 +21,16 @@ const style = {
   pb: 2
 };  
 
-export default function CreateAgenda({ agendas, setAgendas, fetchAgendas }) {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
+export default function CreateAgenda({ agendas, setAgendas, agendaId, agenda, fetchAgendas }) {
+  const initialFormState = { title: `${agenda.title}`, firsttopic: `${agenda.firsttopic}`, firstestimate: `${agenda.firstestimate}`, firstdescription: `${agenda.firstdescription}`, secondtopic: `${agenda.secondtopic}`, secondestimate: `${agenda.secondestimate}`, seconddescription: `${agenda.seconddescription}`,thirdtopic: `${agenda.thirdtopic}`, thirdestimate: `${agenda.thirdestimate}`, thirddescription: `${agenda.thirddescription}`, fourthtopic: `${agenda.fourthtopic}`, fourthestimate: `${agenda.fourthestimate}`, fourthdescription: `${agenda.fourthdescription}`};
   const [formData, setFormData] = useState(initialFormState);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => {setOpen(false);setFormData(initialFormState);}
 
-  async function createAgenda() {
-    if (!formData.title) return;
-    await API.graphql({ query: createAgendaMutation, variables: { input: formData } });
+
+  async function updateAgenda() {
+    await API.graphql({ query: updateAgendaMutation, variables: { input: {id: agendaId, ...formData} }});
     setAgendas([ agendas, formData ]);
     setFormData(initialFormState);
     handleClose();
@@ -37,8 +38,12 @@ export default function CreateAgenda({ agendas, setAgendas, fetchAgendas }) {
   }
 
   return (
-    <div>
-      <Button onClick={handleOpen} variant="contained" sx={{ color: "#fffaf6", backgroundColor: "#11717d", mt: '10px', width: "150px" }}>Add Agenda</Button>
+    <>
+      <Tooltip title="Edit" placement="bottom" arrow TransitionComponent={Zoom}>
+        <Button variant="contained" sx={{ ml: "0px", p: "3px" }}>
+          <Edit onClick={() => handleOpen()}></Edit>
+        </Button>
+      </Tooltip>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -144,10 +149,10 @@ export default function CreateAgenda({ agendas, setAgendas, fetchAgendas }) {
               onChange={e => setFormData({ ...formData, 'fourthdescription': e.target.value})}
               value={formData.fourthdescription}
             />
-            <Button onClick={createAgenda} variant="contained" sx={{ color: "#fffaf6", backgroundColor: "#11717d", mt: '10px', ml: "90px", width: "170px" }}>Create Agenda</Button>
+            <Button onClick={updateAgenda} variant="contained" sx={{ color: "#fffaf6", backgroundColor: "#11717d", mt: '10px', ml: "90px", width: "170px" }}>Update Agenda</Button>
           </Box>
         </Fade>
       </Modal>
-    </div>
+    </>
   )
 }

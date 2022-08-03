@@ -6,7 +6,6 @@ import Dashboard from './components/Dashboard';
 import { Button, Avatar } from "@mui/material";
 import footerBackground from "./images/footerBackground.jpg";
 
-
 function App() {
 
   return (

@@ -24,22 +24,63 @@ const theme = createTheme({
       darker: "#CCC"
     }
   },
-  typography: {
-    title: {
-      fontSize: "3rem",
-      color: '#000000',
-      textDecoration: 'underline #f4673c',
-      borderBottom: '3px solid #f4673c',
-      height: "66px"
-    }
-  },
-  tooltip: {
-    custom: {
-      backgroundColor: "#f4673c",
-      color: "#f4673c",
-    }
-  },
   components: {
+    MuiTypography: {
+      styleOverrides: {
+        body1: {
+          fontFamily: "commuters-sans, 'Open Sans', 'Helvetica Neue', sans-serif",
+        },
+        body2: {
+          fontFamily: "museo-sans, 'Open Sans', 'Helvetica Neue', sans-serif",
+        },
+        title: {
+          fontSize: "3rem",
+          color: '#000000',
+          textDecoration: 'underline #f4673c',
+          borderBottom: '3px solid #f4673c',
+          height: "66px",
+          fontFamily: "commuters-sans, 'Open Sans', 'Helvetica Neue', sans-serif",
+        },
+        header: {
+          fontSize: "22px", 
+          marginLeft: "10px", 
+          color: "#000000", 
+          fontWeight: "bold" ,
+          fontFamily: "commuters-sans, 'Open Sans', 'Helvetica Neue', sans-serif",
+        },
+        agendaTitle: {
+          fontSize: "22px", 
+          marginLeft: "10px", 
+          color: "#fffaf5", 
+          fontWeight: "bold" ,
+          fontFamily: "commuters-sans, 'Open Sans', 'Helvetica Neue', sans-serif",
+        },
+        descriptor: {
+          color: "#12707d", 
+          textAlign: "center",
+          fontFamily: "museo-sans, 'Open Sans', 'Helvetica Neue', sans-serif",
+        },
+        topicList: {
+          textAlign: "center", 
+          color: "#fffaf6",
+          fontFamily: "museo-sans, 'Open Sans', 'Helvetica Neue', sans-serif",
+        }
+      }
+    },
+    MuiTooltip: {
+      styleOverrides: {
+        tooltipArrow: {
+          height: "30px",
+          width: "120px",
+          color: "#fffaf6",
+          backgroundColor: "#f4673c",
+          fontSize: "14px",
+          fontWeight: "bold",
+          textAlign: "center",
+          textJustify: "center",
+        }
+      }
+    },
     MuiCard: {
       styleOverrides: {
         root: {

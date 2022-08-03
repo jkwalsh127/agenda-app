@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { PlayArrow } from '@mui/icons-material';
 import { Button, Pagination, Backdrop, Modal, Box, Fade, Zoom, Tooltip, Grid, Typography } from "@mui/material";
+import { API } from 'aws-amplify';
+import { updateAgenda as updateAgendaMutation } from '../graphql/mutations';
 
 const style = {
   position: 'absolute',
@@ -17,11 +19,19 @@ const style = {
   pb: 2
 };  
 
-export default function StartAgenda({ openAgenda, setOpenAgenda, agendas, agenda, setComplete }) {
+export default function StartAgenda({ openAgenda, fetchAgendas, setOpenAgenda, agendas, agenda }) {
   const [page, setPage] = useState(1)
   const [open, setOpen] = React.useState(false);
   const handleClose = () => setOpen(false);
   const handleOpen = () => setOpen(true);
+
+  async function handleSetComplete({ id }) {
+    const complete = "complete";
+    await API.graphql({ query: updateAgendaMutation, variables: { input: {id: id, complete: complete} }});
+    handleClose();
+    fetchAgendas();
+  }
+
 
   const currentAgenda = agendas.filter(agenda => agenda.id === openAgenda );
 
@@ -185,7 +195,7 @@ export default function StartAgenda({ openAgenda, setOpenAgenda, agendas, agenda
               }
               {
                 currentAgenda.map(agenda => (
-                  <div style={{display: "flex", justifyContent: "center", postition: "absolute", bottom: "0px", marginTop: "30px"}}>
+                  <div style={{display: "flex", justifyContent: "center", alignItems: "center", postition: "absolute", bottom: "0px", marginTop: "30px", flexDirection: "column"}}>
                     <Pagination 
                         color="primary" 
                         count={agenda.secondtopic === "" ? 1 : agenda.thirdtopic === "" ? 2 : agenda.fourthtopic === "" ? 3 : 4 } 
@@ -193,7 +203,7 @@ export default function StartAgenda({ openAgenda, setOpenAgenda, agendas, agenda
                         page={page}
                         size="large"
                     />
-                    <Button onClick={setComplete} variant="outlined" sx={{ mt: '10px', ml: '10px', width: "150px" }}>
+                    <Button onClick={() => handleSetComplete(agenda)} variant="outlined" sx={{ mt: '15px', ml: '10px', width: "150px" }}>
                         Complete
                     </Button>
                   </div>

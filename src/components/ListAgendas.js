@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Typography, Accordion, AccordionSummary, Grid, Box } from "@mui/material";
 import { ExpandMore } from '@mui/icons-material';
 import { ButtonGroup } from '@aws-amplify/ui-react';
@@ -7,7 +7,6 @@ import StartAgenda from './StartAgenda';
 import DeleteAgenda from './DeleteAgenda';
 
 export default function ListAgendas({ agendas, setAgendas, fetchAgendas, setOpenAgenda }) {
-  const [complete, setComplete] = useState(false);
 
   return (
   <div style={{ width: "100%", display: "flex", flexDirection: "column", marginTop: "20px", paddingBottom: "30px", alignSelf: "center"}}>
@@ -20,7 +19,7 @@ export default function ListAgendas({ agendas, setAgendas, fetchAgendas, setOpen
             id="panel2a-header"
             sx={{ height: "50px" }}
           >
-            <Typography variant="agendaTitle" sx={{color: complete ? "#000" : "#fffaf5" }}>
+            <Typography variant="agendaTitle" sx={{textDecorationLine: agenda.complete === "complete" ? "line-through" : "none", textDecorationColor: "#f4673c" }}>
               {agenda.title}
             </Typography>
           </AccordionSummary>
@@ -93,7 +92,7 @@ export default function ListAgendas({ agendas, setAgendas, fetchAgendas, setOpen
                       aria-label="outlined primary button group"
                       variant="contained"
                     > 
-                      <StartAgenda agendas={agendas} openAgenda={agenda.id} setOpenAgenda={setOpenAgenda} agenda={agenda} setComplete={setComplete} />
+                      <StartAgenda agendas={agendas} openAgenda={agenda.id} setOpenAgenda={setOpenAgenda} agenda={agenda} fetchAgendas={fetchAgendas} />
                       <EditAgenda agendas={agendas} setAgendas={setAgendas} agendaId={agenda.id} agenda={agenda} fetchAgendas={fetchAgendas} />
                       <DeleteAgenda agenda={agenda} agendas={agendas} setAgendas={setAgendas} fetchAgendas={fetchAgendas} />
                     </ButtonGroup>

@@ -18,6 +18,7 @@ export const getAgenda = /* GraphQL */ `
       fourthtopic
       fourthestimate
       fourthdescription
+      complete
       createdAt
       updatedAt
     }
@@ -45,6 +46,7 @@ export const listAgenda = /* GraphQL */ `
         fourthtopic
         fourthestimate
         fourthdescription
+        complete
         createdAt
         updatedAt
       }

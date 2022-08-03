@@ -75,7 +75,7 @@ const theme = createTheme({
           fontFamily: "museo-sans, 'Open Sans', 'Helvetica Neue', sans-serif",
         },
         agendaDescriptionStart: {
-          fontSize: "22px", 
+          fontSize: "18px", 
           color: "#000000", 
           marginTop: "25px",
           fontFamily: "museo-sans, 'Open Sans', 'Helvetica Neue', sans-serif",

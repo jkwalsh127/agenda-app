@@ -17,5 +17,5 @@ type Agenda @model {
   fourthtopic: String
   fourthestimate: String
   fourthdescription: String
-  completed: String
+  complete: String
 }

@@ -24,6 +24,7 @@ const style = {
   };
 
 export default function DeleteAgenda({ agenda, agendas, setAgendas, fetchAgendas }) {
+
     const [openDeleteModal, setOpenDeleteModal] = useState(false);
     const handleOpenDeleteModal = () => setOpenDeleteModal(true);
     const handleCloseDeleteModal = () => setOpenDeleteModal(false);

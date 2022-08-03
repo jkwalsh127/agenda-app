@@ -18,6 +18,7 @@ export const onCreateAgenda = /* GraphQL */ `
       fourthtopic
       fourthestimate
       fourthdescription
+      complete
       createdAt
       updatedAt
     }
@@ -40,6 +41,7 @@ export const onUpdateAgenda = /* GraphQL */ `
       fourthtopic
       fourthestimate
       fourthdescription
+      complete
       createdAt
       updatedAt
     }
@@ -62,6 +64,7 @@ export const onDeleteAgenda = /* GraphQL */ `
       fourthtopic
       fourthestimate
       fourthdescription
+      complete
       createdAt
       updatedAt
     }

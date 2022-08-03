@@ -26,7 +26,7 @@ export default function Dashboard() {
 
 
   return (
-    <Card variant="outlined">
+    <Card variant="outlined" sx={{display: "flex"}}>
       <div style={{display: "flex"}}>
         <Typography variant="title">Agendas</Typography>
         <div style={{position: "absolute", margin: "20px 0 0 270px"}}>

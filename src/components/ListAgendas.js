@@ -17,10 +17,10 @@ export default function ListAgendas({ agendas, setAgendas, fetchAgendas, setOpen
   }
 
   return (
-  <div style={{ width: "100%", display: "flex", flexDirection: "column", marginTop: "20px" }}>
+  <div style={{ width: "100%", display: "flex", flexDirection: "column", marginTop: "20px", paddingBottom: "30px", alignSelf: "center"}}>
     {
       agendas.map(agenda => (
-        <Accordion  sx={{ backgroundColor: "#64bfc4", width: "90%", alignSelf: "center" }}>
+        <Accordion  sx={{ backgroundColor: "#64bfc4", width: "90%", alignSelf: "center", justifySelf: "center", p: "4px 0" }}>
           <AccordionSummary
             expandIcon={<ExpandMore />}
             aria-controls="panel2a-content"
@@ -34,66 +34,66 @@ export default function ListAgendas({ agendas, setAgendas, fetchAgendas, setOpen
             <div>
               <Grid container spacing={0}>
 
-                <Grid item xs={4}>
-                  <Typography variant="descriptor">Topics</Typography>
+                <Grid item xs={3} sx={{mb: "5px", pt: "5px", borderTop: "1px solid #2d999e"}}>
+                  <Typography variant="descriptor" sx={{pl: "15px"}}>Topics</Typography>
                 </Grid>
-                <Grid item xs={5}></Grid>
-                <Grid item xs={3}>
-                  <Typography variant="descriptor">Time est.</Typography>
+                <Grid item xs={6} sx={{mb: "5px", pt: "5px", borderTop: "1px solid #2d999e"}}></Grid>
+                <Grid item xs={3} sx={{mb: "5px", pt: "5px", borderTop: "1px solid #2d999e"}}>
+                  <Typography variant="descriptor" sx={{paddingLeft: "23px"}}>Time est.</Typography>
                 </Grid>
 
 
                 <Grid item xs={12} sx={{display: agenda.firsttopic ? "flex" : "none"}}>
-                  <Grid item xs={9}>
+                  <Grid item xs={9} sx={{height: "30px"}}>
                     <Typography variant="topicList">
                       {agenda.firsttopic}
                     </Typography>
                   </Grid>
-                  <Grid item xs={3} sx={{ textAlign: "center"}}>
+                  <Grid item xs={3} sx={{ textAlign: "center", color: "#2d999e"}}>
                     <span style={{color: "#fffaf6"}}>{agenda.firstestimate}</span>
                     {" min"}
                   </Grid>
                 </Grid>
 
                 <Grid item xs={12} sx={{display: agenda.secondtopic ? "flex" : "none"}}>
-                  <Grid item xs={9}>
+                  <Grid item xs={9} sx={{height: "30px"}}>
                     <Typography variant="topicList">
                       {agenda.secondtopic}
                     </Typography>
                   </Grid>
-                  <Grid item xs={3} sx={{ textAlign: "center"}}>
+                  <Grid item xs={3} sx={{ textAlign: "center", color: "#2d999e"}}>
                     <span style={{color: "#fffaf6"}}>{agenda.secondestimate}</span>
                     {" min"}
                   </Grid>
                 </Grid>
 
                 <Grid item xs={12} sx={{display: agenda.thirdtopic ? "flex" : "none"}}>
-                  <Grid item xs={9}>
+                  <Grid item xs={9} sx={{height: "30px"}}>
                     <Typography variant="topicList">
                       {agenda.thirdtopic}
                     </Typography>
                   </Grid>
-                  <Grid item xs={3} sx={{ textAlign: "center"}}>
+                  <Grid item xs={3} sx={{ textAlign: "center", color: "#2d999e"}}>
                   <span style={{color: "#fffaf6"}}>{agenda.thirdestimate}</span>
                     {" min"}                          
                   </Grid>
                 </Grid>
 
                 <Grid item xs={12} sx={{display: agenda.fourthtopic ? "flex" : "none"}}>
-                  <Grid item xs={9}>
+                  <Grid item xs={9} sx={{height: "30px"}}>
                     <Typography variant="topicList">
                       {agenda.fourthtopic}
                     </Typography>
                   </Grid>
-                  <Grid item xs={3} sx={{ textAlign: "center"}}>
+                  <Grid item xs={3} sx={{ textAlign: "center", color: "#2d999e"}}>
                   <span style={{color: "#fffaf6"}}>{agenda.fourthestimate}</span>
                     {" min"}                          
                   </Grid>
                 </Grid>
 
-                <Grid item xs={3}></Grid>
-                <Grid item xs={6}>
-                  <Box sx={{display: "flex", flexDirection: 'column', alignItems: "center", '& > *': {m: 1}}}>
+                <Grid item xs={3} sx={{borderTop: "1px solid #2d999e"}}></Grid>
+                <Grid item xs={6} sx={{borderTop: "1px solid #2d999e"}}>
+                  <Box sx={{mb: "15px", mt: "10px"}}>
                     <ButtonGroup
                       aria-label="outlined primary button group"
                       variant="contained"
@@ -108,7 +108,7 @@ export default function ListAgendas({ agendas, setAgendas, fetchAgendas, setOpen
                     </ButtonGroup>
                   </Box>
                 </Grid>
-                <Grid item xs={3}></Grid>
+                <Grid item xs={3} sx={{borderTop: "1px solid #2d999e"}}></Grid>
 
               </Grid>
             </div>

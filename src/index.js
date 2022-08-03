@@ -88,7 +88,10 @@ const theme = createTheme({
         topicList: {
           textAlign: "center", 
           color: "#fffaf6",
+          fontSize: "16px",
+          fontWeight: "bold",
           fontFamily: "museo-sans, 'Open Sans', 'Helvetica Neue', sans-serif",
+          marginLeft: "30px",
         }
       }
     },

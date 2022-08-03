@@ -1,9 +1,16 @@
 import { Button, Typography, Accordion, AccordionSummary, Grid, Tooltip, Zoom } from "@mui/material";
 import { ExpandMore, PlayArrow, RemoveCircleOutline } from '@mui/icons-material';
 import { ButtonGroup } from '@aws-amplify/ui-react';
+import { API } from 'aws-amplify';
+import { deleteAgenda as deleteAgendaMutation } from './../graphql/mutations';
 
+export default function ListAgendas({ agendas, setAgendas, startAgenda }) {
 
-export default function ListAgendas({ agendas, deleteAgenda, startAgenda }) {
+  async function deleteAgenda({ id }) {
+    const newAgendasArray = agendas.filter(agenda => agenda.id !== id);
+    setAgendas(newAgendasArray);
+    await API.graphql({ query: deleteAgendaMutation, variables: { input: { id } }});
+  }
 
   return (
   <div style={{ width: "100%", display: "flex", flexDirection: "column" }}>

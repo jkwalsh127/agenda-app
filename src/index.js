@@ -39,6 +39,26 @@ const theme = createTheme({
       backgroundColor: "#f4673c",
       color: "#f4673c",
     }
+  },
+  components: {
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          border: "3px solid #f4673c", 
+          maxWidth: 500,
+          width: "60%", 
+          minHeight: 400, 
+          display: "flex", 
+          flexDirection: "column", 
+          alignItems: "center", 
+          justifySelf: "center", 
+          marginTop: 30, 
+          marginBottom: 5, 
+          padding: 2, 
+          overflow: "scroll" 
+        }
+      }
+    }
   }
 });
 

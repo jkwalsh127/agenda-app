@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { API } from 'aws-amplify';
-import { createAgenda as createAgendaMutation } from './../graphql/mutations';
+import { createAgenda as createAgendaMutation } from '../graphql/mutations';
 import { TextField, Button, Typography, Backdrop, Modal, Box, Fade } from "@mui/material";
 
 const initialFormState = { title: '', firsttopic: '', firstestimate: '', firstdescription: '', secondtopic: '', secondestimate: '', seconddescription: '',thirdtopic: '', thirdestimate: '', thirddescription: '', fourthtopic: '', fourthestimate: '', fourthdescription: ''};
@@ -20,7 +20,7 @@ const style = {
   pb: 2
 };  
 
-export default function NewAgenda({ agendas, setAgendas }) {
+export default function CreateAgenda({ agendas, setAgendas }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);

@@ -17,7 +17,7 @@ const style = {
   pb: 2
 };  
 
-export default function StartAgenda({ openAgenda, setOpenAgenda, agendas, agenda }) {
+export default function StartAgenda({ openAgenda, setOpenAgenda, agendas, agenda, setComplete }) {
   const [page, setPage] = useState(1)
   const [open, setOpen] = React.useState(false);
   const handleClose = () => setOpen(false);
@@ -193,6 +193,9 @@ export default function StartAgenda({ openAgenda, setOpenAgenda, agendas, agenda
                         page={page}
                         size="large"
                     />
+                    <Button onClick={setComplete} variant="outlined" sx={{ mt: '10px', ml: '10px', width: "150px" }}>
+                        Complete
+                    </Button>
                   </div>
                 ))
               }

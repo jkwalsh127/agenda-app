@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import '@aws-amplify/ui-react/styles.css';
 import { Authenticator } from '@aws-amplify/ui-react';
-import Dashboard from './components/Dashboard';
+import Dashboard from './pages/Dashboard';
 import { Button, Avatar } from "@mui/material";
 import footerBackground from "./images/footerBackground.jpg";
 

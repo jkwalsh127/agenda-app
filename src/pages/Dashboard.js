@@ -3,8 +3,8 @@ import '@aws-amplify/ui-react/styles.css';
 import { API } from 'aws-amplify';
 import { listAgenda } from '../graphql/queries';
 import { Card, Typography, Fab, Tooltip, Zoom } from "@mui/material";
-import CreateAgenda from './CreateAgenda';
-import ListAgendas from './ListAgendas';
+import CreateAgenda from '../components/CreateAgenda';
+import ListAgendas from '../components/ListAgendas';
 import { Add } from '@mui/icons-material';
 
 export default function Dashboard() {

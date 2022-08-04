@@ -9,12 +9,11 @@
 ## Description
 This was a full-stack project intended to get familiar with a new stack. It was the first time that I used MaterialUI as well as the first time I used any of the AWS tools (I primarily used Amplify for this project). The idea was simple. I wanted to create an application that required a user to be logged in to utilize, and the application itself was to provide CRUD actions to be able to work with "Agendas", each of which contained up to four "topics" that included a "title", "time estimation", and "description". The intended use is for team meetings, where agends can be displayed, and the list of topics could be walked through and discussed. While the functionality is simple, the final product is clean and intuitive. Conditional checks are used on the create and update forms, so that improper submission will return prompts to the user with specific guidance as to how to fill them out correctly. There are also tooltips provided on the actionable buttons, and the user is prompted with a modal to confirm that they want to delete an agenda when the delete button is clicked. This is all to make the application user-friendly and self-explanatory. Finally, a field in the agenda schema is included to mark an agenda as being completed. Once so, it's display in the dashboard will be altered slightly so users will know this agenda has been covered. 
 
-![walkthrough](https://user-images.githubusercontent.com/101354032/182737435-a6899a66-4ad9-4acd-92e4-868c5a005bdd.gif)
-
 ### Usage
 ---
 Click <a href="https://main.d1k6fxmqzj4l99.amplifyapp.com/" target="_blank">**here**<a> to visit the application hosted by AWS.
 
+![walkthrough](https://user-images.githubusercontent.com/101354032/182737435-a6899a66-4ad9-4acd-92e4-868c5a005bdd.gif)
 
 #### Credits
 ---

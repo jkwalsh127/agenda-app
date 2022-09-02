@@ -11,7 +11,6 @@ This was a full-stack project intended to get familiar with a new stack. It was 
 
 ### Usage
 ---
-Click <a href="https://main.d1k6fxmqzj4l99.amplifyapp.com/" target="_blank">**here**<a> to visit the application hosted by AWS.
 
 ![walkthrough](https://user-images.githubusercontent.com/101354032/182737435-a6899a66-4ad9-4acd-92e4-868c5a005bdd.gif)
 

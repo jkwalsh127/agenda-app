@@ -13,8 +13,9 @@ This was a full-stack project intended to get familiar with a new stack. It was 
 ---
 
 ![walkthrough](https://user-images.githubusercontent.com/101354032/182737435-a6899a66-4ad9-4acd-92e4-868c5a005bdd.gif)
-
-<img align="center" width="500" alt="Screen Shot 2022-09-02 at 4 30 35 PM" src="https://user-images.githubusercontent.com/101354032/188246241-2b592698-83ae-4fd6-a4f9-ca017dd78ff2.png">
+<p align="center">
+<img width="500" alt="Screen Shot 2022-09-02 at 4 30 35 PM" src="https://user-images.githubusercontent.com/101354032/188246241-2b592698-83ae-4fd6-a4f9-ca017dd78ff2.png">
+</p>
 
 
 #### Credits
